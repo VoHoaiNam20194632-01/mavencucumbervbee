@@ -6,7 +6,7 @@
 
 [II. Cài Đặt](#caidat)
 - [1. JDK](#JDK)
-- [2. Cài đặt Intellij IDEA](#Intellij)
+- [2. Cài đặt Intellij IDEA](#intellij)
 - [3.  Maven Dependency](#dependency)
 - [4. Trích dẫn, bo chữ](#trichdanbochu)
 - [5. Gạch đầu dòng](#gachdaudong)
@@ -56,7 +56,7 @@ Bạn cần cài đặt JDK 21 tại đây
 https://www.oracle.com/java/technologies/downloads/#jdk21-windows
 ```
 
-<a name="Intellij "></a>
+<a name="intellij"></a>
 ### 2. Cài đặt Intellij IDEA
 Bạn cần cài đặt Intellij tại đây
 ```
