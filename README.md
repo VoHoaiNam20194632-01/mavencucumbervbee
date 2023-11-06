@@ -4,7 +4,7 @@
 
 [I. Mở đầu](#Modau)
 
-[II. Cài Đặt](#caidat)
+[II. Cài Đặt và Triển Khai Project ](#caidat)
 - [1. JDK](#JDK)
 - [2. Cài đặt Intellij IDEA](#intellij)
 - [3.  Maven Dependency](#dependency)
@@ -12,6 +12,9 @@
 [III. Cấu Trúc Project](#cautrucproject)
 - [1. Cấu Trúc Project](#project)
 - [1. Cấu Trúc src](#src)
+
+[IV. Chạy bằng cmd](#cmd)
+
 [Tổng kết](#TongKet)
 
 ===========================
@@ -161,6 +164,16 @@ Feature: feature  to test login functionality
       | vonam0561@gmail.com | 24081201Nam@ |
 ```
 
+<a name="cmd"></a>
+###  IV. Chạy Bằng CMD
+	Cần cài đặt maven , java và cấu hình  biền môi trường (Environment Variables )
+
+	Cài Đặt Maven 
+	https://maven.apache.org/download.cgi
+	Cài đặt Java 
+	https://www.oracle.com/java/technologies/downloads/
+
+	Sau khi git clone project bạn mở project bằng cmd và chạy câu lệnh " mvn test "  thì project sẽ thực hiện
 <a name="TongKet"></a>
 ## Tổng kết 
 
