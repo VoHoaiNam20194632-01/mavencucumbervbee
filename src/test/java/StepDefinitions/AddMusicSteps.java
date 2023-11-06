@@ -32,14 +32,14 @@ public class AddMusicSteps {
     }
 
     @And("select music")
-    public void selectMusic()   throws InterruptedException {
+    public void selectMusic()    {
         WebElement chonnhacnen = wait50.until(ExpectedConditions.visibilityOfElementLocated(chonnhacnenLocator));
         chonnhacnen.click();
 
     }
 
     @And("click on accept music button")
-    public void clickOnAcceptMusicButton() throws InterruptedException {
+    public void clickOnAcceptMusicButton() {
         WebElement apdung = wait50.until(ExpectedConditions.visibilityOfElementLocated(apdungLocator));
         apdung.click();
 
