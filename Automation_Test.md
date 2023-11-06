@@ -1,3 +1,0 @@
-# mavencucumbervbee
-demo project
-dnsck
