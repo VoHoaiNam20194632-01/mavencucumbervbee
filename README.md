@@ -5,7 +5,7 @@
 [I. Mở đầu](#Modau)
 
 [II. Cài Đặt](#caidat)
-- [1. Thẻ tiêu đề](#thetieude)
+- [1. JDK](#JDK)
 - [2. Chèn link, chèn ảnh](#chenlinkchenanh)
 - [3. Ký tự in đậm, in nghiêng](#kytuindaminnghieng)
 - [4. Trích dẫn, bo chữ](#trichdanbochu)
@@ -46,16 +46,15 @@
 
 <a name="caidat"></a>
 ## II. Cài Đặt
-Cài đặt Java JDK 21 
-Cài đặt Intellij [đây](http://daringfireball.net/projects/markdown/syntax) để biết cách sử dụng.
+Cài đặt các môi trường để bắt đầu thực hiện Project
 
-<a name="thetieude"></a>
-### 1. Thẻ tiêu đề
+<a name="JDK"></a>
+### 1. Cài đặt JDK
 
-Markdown sử dụng kí tự # để bắt đầu cho các thẻ tiêu đề, có thể dùng từ 1 đến 6 ký tự # liên tiếp. Mức độ riêu đề giảm dần từ 1 đến 6
-
-Tùy mục đích và ý thích bạn có thể sử dụng cách này để thể hiện các chỉ mục khác nhau.
-
+Bạn cần cài đặt JDK 21 tại đây
+```
+https://www.oracle.com/java/technologies/downloads/#jdk21-windows
+```
 Ví dụ:
 
 ```
