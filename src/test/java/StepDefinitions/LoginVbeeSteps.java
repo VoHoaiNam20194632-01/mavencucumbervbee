@@ -69,7 +69,6 @@ public class LoginVbeeSteps {
         studiobtn.click();
     }
 
-
     @And("click No")
     public void clickNo() throws InterruptedException {
         WebElement khongbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(khongLocator));
