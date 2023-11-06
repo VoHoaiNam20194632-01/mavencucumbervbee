@@ -11,7 +11,6 @@ Feature: feature  to test login functionality
     And confirm capcha
     And click on login button
     And click on studio button
-    And click x
     And click No
     Then user is navigated to the home page
 
