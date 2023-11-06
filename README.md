@@ -6,8 +6,8 @@
 
 [II. Cài Đặt](#caidat)
 - [1. JDK](#JDK)
-- [2. Chèn link, chèn ảnh](#chenlinkchenanh)
-- [3. Ký tự in đậm, in nghiêng](#kytuindaminnghieng)
+- [2. Cài đặt Intellij IDEA](#Intellij)
+- [3.  Maven Dependency](#dependency)
 - [4. Trích dẫn, bo chữ](#trichdanbochu)
 - [5. Gạch đầu dòng](#gachdaudong)
 - [6. Tạo bảng](#taobang)
@@ -57,25 +57,80 @@ https://www.oracle.com/java/technologies/downloads/#jdk21-windows
 ```
 
 <a name="Intellij "></a>
-### 2. Cài đặt Intellij IDE
+### 2. Cài đặt Intellij IDEA
 Bạn cần cài đặt Intellij tại đây
 ```
 https://www.jetbrains.com/idea/download/?section=windows
 ```
 Sau khi cài đặt xong tiếp theo sẽ khởi tạo Project với Maven, thêm đầy đủ JDK đã cài đặt phía trên.
-<a name="trichdanbochu"></a>
-### 4. Maven Dependency
+<a name="dependency"></a>
+### 3. Maven Dependency
 
 Cần thêm các <dependency> ở pom.xml 
 
-    ```sh
+    ```
   	<dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.14.1</version>
         </dependency>
-    ```
+	<dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.5.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.1</version>
+        </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.14.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.14.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-gherkin -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-gherkin</artifactId>
+            <version>7.14.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>27.0.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+    ```
+Sau khi thêm vào pom.xml thì lưu lại và cần kiểm tra ở External Libraries xem đã được thêm các Libraries đầy đủ chưa.
 ### 5. Gạch đầu dòng
 
 Để sử dụng gạch đầu dòng bạn chỉ cần sử dụng cú pháp sau:
