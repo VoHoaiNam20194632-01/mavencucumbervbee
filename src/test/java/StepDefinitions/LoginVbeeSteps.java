@@ -69,13 +69,6 @@ public class LoginVbeeSteps {
         studiobtn.click();
     }
 
-    @And("click x")
-    public void clickX() throws InterruptedException {
-        System.out.println("dang tim thay x");
-        WebElement xbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xLocator));
-        System.out.println("da tim thay x");
-        xbtn.click();
-    }
 
     @And("click No")
     public void clickNo() throws InterruptedException {
