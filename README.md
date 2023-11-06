@@ -55,110 +55,27 @@ Bạn cần cài đặt JDK 21 tại đây
 ```
 https://www.oracle.com/java/technologies/downloads/#jdk21-windows
 ```
-Ví dụ:
 
+<a name="Intellij "></a>
+### 2. Cài đặt Intellij IDE
+Bạn cần cài đặt Intellij tại đây
 ```
-# 1.Tiêu đề cấp 1
+https://www.jetbrains.com/idea/download/?section=windows
 ```
-
-# 1.Tiêu đề cấp 1
-
-```
-## 2.Tiêu đề cấp 2
-```
-
-## 2.Tiêu đề cấp 2
-
-```
-###### 6.Tiêu đề cấp 6
-```
-
-###### 6.Tiêu đề cấp 6
-
-<a name="chenlinkchenanh"></a>
-### 2. Chèn link, chèn ảnh
-
-Để chèn hyperlink bạn chỉ cần paste luôn linh đó vào file .md
-
-```
-https://github.com
-```
-
-https://github.com
-
-Hoặc bạn cũng có thể sử dụng cú pháp sau để thu ngắn đường dẫn của link
-
-```
-[Github](https://github.com)
-```
-
-Kết quả là:
-
-[Github](https://github.com)
-
-Để chèn ảnh thì bạn hãy sử dụng cú pháp sau:
-
-```
-<img src="link_anh_cua_ban">
-```
-
-Tôi thường sử dụng công cụ [Lightshot](https://app.prntscr.com/en/index.html) để chụp ảnh màn hình và up hình đó lên trang http://i.imgur.com/ để lấy đường dẫn ảnh đưa vào Github
-
-Hai công cụ này khá dễ sử dụng, bạn chỉ cần chụp màn hình bằng Lightshot ấn Ctrl + C để copy và Ctrl + V để paste vào trình duyệt tại trang web http://i.imgur.com/
-
-<a name=kytuindaminnghieng></a>
-### 3. Ký tự in đậm, in nghiêng
-
-- Để in đậm một đoạn text  bạn chỉ cần làm như sau:
-
-```
-**từ cần in đậm**
-```
-
-**từ cần in đậm**
-
-- Để in nghiên một đoạn text  bạn chỉ cần làm như sau:
-
-```
-*từ cần in nghiêng*
-```
-
-*từ cần in nghiêng*
-
+Sau khi cài đặt xong tiếp theo sẽ khởi tạo Project với Maven, thêm đầy đủ JDK đã cài đặt phía trên.
 <a name="trichdanbochu"></a>
-### 4. Trích dẫn, bo chữ
+### 4. Maven Dependency
 
-Để bo một đoạn text thì bạn chỉ cần sử dụng cú pháp sau:
-
-```
-`đoạn cần bo`
-```
-
-Kết quả là: `đoạn cần bo`
-
-Để làm nổi bật một đoạn, chẳng hạn như một đoạn shell hay file cấu hình bạn có thể sử dụng cú pháp như ví dụ sau:
+Cần thêm các <dependency> ở pom.xml 
 
     ```sh
-    auto eth0
-    iface eth0 inet static
-    ipaddress 10.10.10.10
-	netmask 255.255.255.0
-	gateway 10.10.10.1
-	dns-nameservers 8.8.8.8
+  	<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.14.1</version>
+        </dependency>
     ```
 
-Kết quả như sau:
-
-```sh
-auto eth0
-iface eth0 inet static
-ipaddress 10.10.10.10
-netmask 255.255.255.0
-gateway 10.10.10.1
-dns-nameservers 8.8.8.8
-```
-
-<a name="gachdaudong"></a>
 ### 5. Gạch đầu dòng
 
 Để sử dụng gạch đầu dòng bạn chỉ cần sử dụng cú pháp sau:
