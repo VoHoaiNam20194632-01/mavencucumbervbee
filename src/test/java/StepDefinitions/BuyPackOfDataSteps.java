@@ -82,7 +82,7 @@ public class BuyPackOfDataSteps {
     }
 
     @And("click agree to pay button")
-    public void clickAgreeToPayButton() throws InterruptedException {
+    public void clickAgreeToPayButton()  {
         WebElement thanhtoanbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(thanhtoanLocator));
         thanhtoanbtn.click();
     }
