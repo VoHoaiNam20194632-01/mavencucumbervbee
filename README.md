@@ -166,6 +166,7 @@ Feature: feature  to test login functionality
 
 <a name="cmd"></a>
 ###  IV. Chạy Bằng CMD
+
 	Cần cài đặt maven , java và cấu hình  biền môi trường (Environment Variables )
 
 	Cài Đặt Maven 
@@ -173,7 +174,9 @@ Feature: feature  to test login functionality
 	Cài đặt Java 
 	https://www.oracle.com/java/technologies/downloads/
 
-	Sau khi git clone project bạn mở project bằng cmd và chạy câu lệnh " mvn test "  thì project sẽ thực hiện
+	Sau khi git clone project bạn mở project bằng cmd và chạy câu lệnh ``` mvn test ```  thì project sẽ thực hiện
+
+  	Sau khi chạy xong muốn xem báo cáo test case thì vào fordel " target " và chạy câu lệnh " start cucumber-html-report.html " sau đó báo cáo các test case , các steps sẽ ở trên web
 <a name="TongKet"></a>
 ## Tổng kết 
 
