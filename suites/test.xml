@@ -9,25 +9,25 @@
             <class name="Runner.LoginRunner"/>
         </classes>
     </test>
-<!--    <test verbose="2" name="Test AddMusic">-->
-<!--        <classes>-->
-<!--            <class name="Runner.AddMusic"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="2" name="Test AddReading">-->
-<!--        <classes>-->
-<!--            <class name="Runner.AddReadingVoice"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="2" name="Test AddText">-->
-<!--        <classes>-->
-<!--            <class name="Runner.AddText"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="2" name="Test BuyPackOfData">-->
-<!--        <classes>-->
-<!--            <class name="Runner.BuyPackOfData"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test verbose="2" name="Test AddMusic">
+        <classes>
+            <class name="Runner.AddMusic"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Test AddReading">
+        <classes>
+            <class name="Runner.AddReadingVoice"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Test AddText">
+        <classes>
+            <class name="Runner.AddText"/>
+        </classes>
+    </test>
+    <test verbose="2" name="Test BuyPackOfData">
+        <classes>
+            <class name="Runner.BuyPackOfData"/>
+        </classes>
+    </test>
 
 </suite>

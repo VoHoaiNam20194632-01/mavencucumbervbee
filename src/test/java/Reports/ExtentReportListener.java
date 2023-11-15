@@ -62,7 +62,6 @@ package Reports;//package Reports;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -93,25 +92,25 @@ public class ExtentReportListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        PickleWrapper pickleWrapper = (PickleWrapper) result.getParameters()[0];
-        FeatureWrapper featureWrapper = (FeatureWrapper) result.getParameters()[1];
-
-        String scenarioName = pickleWrapper.getPickle().getName();
-        String featureName = featureWrapper.getClass().getName();
-
-        System.out.println("Scenario Name: " + scenarioName);
-        System.out.println("Feature Name: " + featureName);
-
-        // Lấy danh sách các bước test từ PickleStepTestStep
-        for (TestStep testStep : pickleWrapper.getTestSteps()) {
-            if (testStep instanceof PickleStepTestStep) {
-                PickleStepTestStep pickleStepTestStep = (PickleStepTestStep) testStep;
-                PickleStep pickleStep = pickleStepTestStep.getPickleStep();
-                String stepText = pickleStep.getText();
-                String stepStatus = result.getStatus() == ITestResult.SUCCESS ? "PASS" : "FAIL";
-                System.out.println("Test Case: " + stepText + " - " + stepStatus);
-            }
-        }
+//        PickleWrapper pickleWrapper = (PickleWrapper) result.getParameters()[0];
+//        FeatureWrapper featureWrapper = (FeatureWrapper) result.getParameters()[1];
+//
+//        String scenarioName = pickleWrapper.getPickle().getName();
+//        String featureName = featureWrapper.getClass().getName();
+//
+//        System.out.println("Scenario Name: " + scenarioName);
+//        System.out.println("Feature Name: " + featureName);
+//
+//        // Lấy danh sách các bước test từ PickleStepTestStep
+//        for (TestStep testStep : pickleWrapper.getTestSteps()) {
+//            if (testStep instanceof PickleStepTestStep) {
+//                PickleStepTestStep pickleStepTestStep = (PickleStepTestStep) testStep;
+//                PickleStep pickleStep = pickleStepTestStep.getPickleStep();
+//                String stepText = pickleStep.getText();
+//                String stepStatus = result.getStatus() == ITestResult.SUCCESS ? "PASS" : "FAIL";
+//                System.out.println("Test Case: " + stepText + " - " + stepStatus);
+//            }
+//        }
     }
 
     // Phương thức để log thông tin chi tiết của từng bước

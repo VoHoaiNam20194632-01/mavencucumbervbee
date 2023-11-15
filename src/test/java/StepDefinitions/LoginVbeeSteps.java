@@ -28,13 +28,14 @@ public class LoginVbeeSteps {
     By captchaLocator = By.id("recaptcha-anchor");
     By loginLocator = By.xpath("//button[contains(text(), 'Đăng nhập')]");
     By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
+    By xxLocator = By.cssSelector("#mui-91 > button");
     By khongLocator = By.id("moe-dontallow_button");
     By boquaLocator = By.xpath("//*[@id=\"react-joyride-step-0\"]/div/div/div[1]/div[3]/button/div/div");
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
         System.out.println("inside Step - user is on login page vbee");
-        driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-website&redirect_uri=https%3A%2F%2Fdev.vbee.vn%2Fservice-select&state=26abd2aa-0272-4623-8ce8-a32233d08c69&response_mode=fragment&response_type=code&scope=openid&nonce=1b45e277-ce7c-4afb-84dd-4ba3da891734");
+        driver.navigate().to("https://accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-website&redirect_uri=https%3A%2F%2Fvbee.vn%2Fservice-select&state=e4d1e4dd-1e6a-478c-84a2-53428e35cf6d&response_mode=fragment&response_type=code&scope=openid&nonce=69d8844f-1e15-4fad-83b0-367cbf579305");
     }
 
     @When("^user enters (.*) and (.*)$")
@@ -46,8 +47,8 @@ public class LoginVbeeSteps {
         passwordbtn.sendKeys(password);
     }
 
-    @And("confirm capcha")
-    public void confirmCapcha() throws InterruptedException {
+    @And("confirm captcha")
+    public void confirmCaptcha() throws InterruptedException {
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
         WebElement captcharbtn = driver.findElement(captchaLocator );
         captcharbtn .click();
@@ -71,8 +72,19 @@ public class LoginVbeeSteps {
 
     @And("click No")
     public void clickNo() throws InterruptedException {
+        Thread.sleep(5000);
+        System.out.println("bat dau tim x");
+        By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
+        System.out.println("dg tim");
+        System.out.println(xLocator);
+        WebElement xbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xLocator));
+        System.out.println(xbtn);
         WebElement khongbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(khongLocator));
         khongbtn.click();
+        xbtn.click();
+        System.out.println("bat dau tim xx");
+        WebElement xxbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xxLocator));
+        xxbtn.click();
         WebElement boquabtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(boquaLocator));
         boquabtn.click();
     }
