@@ -26,15 +26,13 @@ public class BuyPackOfDataSteps {
     By nganhangLocator = By.xpath("//*[@id=\"choosePaymentMethod\"]/div/div/div[2]/div[2]/div/div/div[2]");
     By thaydoisdtLocator = By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div/div/div[3]/div[2]/div[2]/div/div/div[1]/div[3]/p");
     By nhapsdtLocator = By.xpath("/html/body/div[6]/div[3]/div/div/div[1]/div[2]/div/div/input");
-    By hoanthanhsdtLocator = By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/button");
+    By hoanthanhsdtLocator = By.xpath("//button[text()='Hoàn thành']");
     By thanhtoanLocator = By.xpath("//*[@id=\"makePayment\"]/button");
-    By hoanthanhLocator = By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/div[2]/div/button");
+    By hoanthanhLocator = By.xpath("//button[text()='Hoàn tất']");
     @When("click buy pack of data button")
     public void clickBuyPackOfDataButton() throws InterruptedException {
         WebElement muagoicuocbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(muagoicuocLocator));
-        Thread.sleep(1000);
         muagoicuocbtn.click();
-        Thread.sleep(1000);
     }
 
     @And("click pack of data three months button")
@@ -67,18 +65,27 @@ public class BuyPackOfDataSteps {
 
     @And("click change phone number button")
     public void clickChangePhoneNumberButton() throws InterruptedException {
-        Thread.sleep(6000);
         WebElement thaydoisdt = wait50.until(ExpectedConditions.visibilityOfElementLocated(thaydoisdtLocator));
         thaydoisdt.click();
     }
 
     @And("Enter phone number and complete")
     public void enterPhoneNumberAndComplete() throws InterruptedException {
-        WebElement nhapsdt = driver.findElement(nhapsdtLocator);
-        nhapsdt.click();
+//        WebElement nhapsdt = driver.findElement(nhapsdtLocator);
+//        nhapsdt.click();
+//        System.out.println("dang bat dau click");
+//        Thread.sleep(3000);
+//        Thread.sleep(3000);
+//        System.out.println("dang bat dau xoa");
+//        Thread.sleep(3000);
+//        nhapsdt.clear();
+//        Thread.sleep(3000);
+//        System.out.println("da xoa va bat dau nhap");
+//        Thread.sleep(3000);
+//        nhapsdt.sendKeys("0355782142");
+//        Thread.sleep(3000);
         WebElement hoanthanhsdtbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(hoanthanhsdtLocator));
         hoanthanhsdtbtn.click();
-        Thread.sleep(2000);
     }
 
     @And("click agree to pay button")

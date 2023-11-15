@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import sessionmanagement.WebDriverManager;
 
 import java.time.Duration;
-
 public class LoginVbeeSteps {
     private static WebDriver driver;
 
@@ -21,24 +20,30 @@ public class LoginVbeeSteps {
     }
     Duration timeout50 = Duration.ofSeconds(50);
     WebDriverWait wait50 = new WebDriverWait(driver,timeout50);
-
+//    By dangnhapLocator = By.xpath("//*[@id=\"__next\"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div[1]");
+//    By AIVoiceLocator = By.xpath("//*[@id=\"dropdown\"]/div/button[2]/div");
     By mailLocator = By.id("username");
     By passwordLocator = By.id("password");
     By studio = By.xpath("//*[@id=\"__next\"]/main/div/div/div[2]/div/div[1]/div");
     By captchaLocator = By.id("recaptcha-anchor");
-    By loginLocator = By.xpath("//button[contains(text(), 'Đăng nhập')]");
-    By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
+    By loginLocator = By.xpath("//button[contains(text(), 'Đăng nhậ')]");
+    By xxLocator = By.cssSelector("#mui-91 > button");
     By khongLocator = By.id("moe-dontallow_button");
     By boquaLocator = By.xpath("//*[@id=\"react-joyride-step-0\"]/div/div/div[1]/div[3]/button/div/div");
+    By chuyenvanbanLocator = By.xpath("//*[@id=\"root\"]/div/div[1]/div/div/div[2]/ul/li[1]/a");
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
         System.out.println("inside Step - user is on login page vbee");
-        driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-website&redirect_uri=https%3A%2F%2Fdev.vbee.vn%2Fservice-select&state=26abd2aa-0272-4623-8ce8-a32233d08c69&response_mode=fragment&response_type=code&scope=openid&nonce=1b45e277-ce7c-4afb-84dd-4ba3da891734");
+        driver.navigate().to("https://accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fvbee.vn%2Fservice-select&state=7534abb2-f6be-4092-86cb-0ce7c6bd1709&response_mode=fragment&response_type=code&scope=openid&nonce=fc76d0df-940d-48be-b404-a9e72e961f63");
+//        WebElement dangnhapbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(dangnhapLocator));
+//        dangnhapbtn.click();
+//        WebElement AiVoicebtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(AIVoiceLocator));
+//        AiVoicebtn.click();
     }
 
     @When("^user enters (.*) and (.*)$")
-    public void userEntersUsernameAndPassword(String username, String password) throws InterruptedException {
+    public void userEntersUsernameAndPassword(String username, String password)  {
         System.out.println("Inside Step - user enters username and password");
         WebElement mailbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(mailLocator));
         mailbtn.sendKeys(username);
@@ -46,12 +51,12 @@ public class LoginVbeeSteps {
         passwordbtn.sendKeys(password);
     }
 
-    @And("confirm capcha")
-    public void confirmCapcha() throws InterruptedException {
+    @And("confirm captcha")
+    public void confirmCaptcha() throws InterruptedException {
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
         WebElement captcharbtn = driver.findElement(captchaLocator );
         captcharbtn .click();
-        Thread.sleep(40000);
+        Thread.sleep(20000);
         driver.switchTo().defaultContent();
     }
 
@@ -71,15 +76,31 @@ public class LoginVbeeSteps {
 
     @And("click No")
     public void clickNo() throws InterruptedException {
+        Thread.sleep(5000);
+        // Tìm và ẩn hoặc loại bỏ phần tử quảng cáo
+        System.out.println("bat dau tim x");
+        By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
+        System.out.println("dg tim");
+        System.out.println(xLocator);
+        WebElement xbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xLocator));
+        System.out.println(xbtn);
         WebElement khongbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(khongLocator));
         khongbtn.click();
+        xbtn.click();
+        System.out.println("bat dau tim xx");
+        WebElement xxbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xxLocator));
+        xxbtn.click();
         WebElement boquabtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(boquaLocator));
         boquabtn.click();
     }
     @Then("user is navigated to the home page")
-    public void userIsNavigatedToTheHomePage() {
-
+    public void userIsNavigatedToTheHomePage() throws InterruptedException {
+        WebElement  chuyenvanbanbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(chuyenvanbanLocator));
+        chuyenvanbanbtn.click();
+        Thread.sleep(1000);
     }
 
 
 }
+
+

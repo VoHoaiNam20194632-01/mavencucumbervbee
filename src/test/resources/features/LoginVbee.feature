@@ -5,10 +5,10 @@
 Feature: feature  to test login functionality
 
   @login
-  Scenario Outline: Check login is successful with valid credentials
+  Scenario Outline: Login test
     Given user is on login page
     When user enters <username> and <password>
-    And confirm capcha
+    And confirm captcha
     And click on login button
     And click on studio button
     And click No
