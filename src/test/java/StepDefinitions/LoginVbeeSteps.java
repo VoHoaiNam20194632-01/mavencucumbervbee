@@ -74,7 +74,6 @@ public class LoginVbeeSteps {
     public void clickNo() throws InterruptedException {
         Thread.sleep(5000);
         System.out.println("bat dau tim x");
-        By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
         System.out.println("dg tim");
         System.out.println(xLocator);
         WebElement xbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xLocator));
