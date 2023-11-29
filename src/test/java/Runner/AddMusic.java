@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
                 "src/test/resources/features/AddMusic.feature",
         },
         glue = "StepDefinitions",
-        plugin = {"pretty", "html:target/cucumber-html-report.html"}
+        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 @Test
 public class AddMusic extends AbstractTestNGCucumberTests {

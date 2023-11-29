@@ -11,11 +11,13 @@ Feature: Add text And click on converted into voice button
 @Add
   Scenario Outline: Add text
     When click on add text button and add <text>
-    And click change format video button and click mpba button
+    And click change "<format>" format video button
     And click on converted into voice button
     And remove cancel
 
     Examples:
-      |text|
-      |vo hoai nam|
-      |vo hoai nam codsa|
+      |text| format|
+      |vo hoai nam| mp3|
+      |vo hoai nam nghe an|wav|
+      |vo hoai nam do luong nghe an|wav|
+

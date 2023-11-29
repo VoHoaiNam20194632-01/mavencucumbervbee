@@ -16,4 +16,4 @@ Feature: feature  to test login functionality
 
     Examples:
       | username | password |
-      | vonam0561@gmail.com | 24081201Nam@ |
+      | vonam0561@gmail.com |24081201Nam@ |
