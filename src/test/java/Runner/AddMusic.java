@@ -5,10 +5,11 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
 @CucumberOptions(
         features = {
-                "src/test/resources/features/AddMusic.feature",
+                "src/test/resources/features/textTransfer/AddMusic.feature",
         },
         glue = "StepDefinitions",
-        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+        plugin = {"pretty", "json:target/cucumber-reports/reportmusic.json",
+                "pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 @Test
 public class AddMusic extends AbstractTestNGCucumberTests {

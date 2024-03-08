@@ -1,12 +1,13 @@
 package Pages.textTransfer;
 
 import driver.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -18,10 +19,12 @@ public class AddReadingVoice {
     }
     Duration timeout50 = Duration.ofSeconds(50);
     WebDriverWait wait50 = new WebDriverWait(driver,timeout50);
-    By chonbtngiongdocLocator = By.xpath("//button[@aria-label='Chọn giọng đọc']    ");
-    By gioitinhnamLocator = By.cssSelector("input[type='checkbox'][value='male']");
-    By chonguoiLocator = By.xpath("//button[@aria-label='SG - Trung Kiên voice']");
+    By chonbtngiongdocLocator = By.id("buttonMenu");
     private static boolean firstExampleExecuted = false;
+    public void captureScreen(String name) throws IOException {
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("image\\AddReadingVoice\\" + name));
+    }
 
     private static void uncheckAllCheckboxes(WebDriver driver, String checkboxcssSelector) {
         java.util.List<WebElement> checkboxes = driver.findElements(By.cssSelector(checkboxcssSelector));
@@ -43,22 +46,9 @@ public class AddReadingVoice {
         }
 
     }
-    public static void uncheckAllCheckboxesLanguage(){
-        String cssSeletorLanguageVietNam = "input[type='checkbox'][value='vi-VN']";
-        String cssSelectorLanguageTiengAnhUc = "input[type='checkbox'][value='en-AU']";
-        String cssSelectorLanguageTiengAnhAnh =  "input[type='checkbox'][value='en-GB']";
-        List<String> checkboxscssSelector = List.of(
-                cssSeletorLanguageVietNam,
-                cssSelectorLanguageTiengAnhUc,
-                cssSelectorLanguageTiengAnhAnh
-        );
-        for (String checkboxcssSelector : checkboxscssSelector) {
-            uncheckAllCheckboxes(driver, checkboxcssSelector);
-        }
-    }
     public static void uncheckAllCheckboxesType(){
-        String selectorTypeBasic = "input[type='checkbox'][value='BASIC']";
-        String selectorTypePro = "input[type='checkbox'][value='PRO']";
+        String selectorTypeBasic = "input[type='checkbox'][value='STANDARD']";
+        String selectorTypePro = "input[type='checkbox'][value='PREMIUM']";
         List<String> checkboxscssSelector = List.of(
                 selectorTypeBasic,
                 selectorTypePro
@@ -71,25 +61,18 @@ public class AddReadingVoice {
     public AddReadingVoice(WebDriver driver){
         this.driver = driver;
     }
-    public void ReadingButton(){
+    public void ReadingButton() throws IOException {
         WebElement giongdocbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(chonbtngiongdocLocator));
         giongdocbtn.click();
     }
-    public void selectGender(String gender ) throws InterruptedException {
+    public void selectGender(String gender ) throws InterruptedException, IOException {
         uncheckAllCheckboxesGender();
         String selectorGender = "input[type='checkbox'][value='" + gender.toLowerCase()+"']";
         By genderLocator = By.cssSelector(selectorGender);
         WebElement genderButton = driver.findElement(genderLocator);
         Thread.sleep(1000);
+        captureScreen("OptionReading.png");
         genderButton.click();
-    }
-    public void selectLanguage(String language) throws InterruptedException {
-        uncheckAllCheckboxesLanguage();
-        By ngonnguvietnamLocator = By.cssSelector("input[type='checkbox'][value='"+ language +"']");
-        Thread.sleep(1000);
-        WebElement ngonngubtn = driver.findElement(ngonnguvietnamLocator);
-        Thread.sleep(1000);
-        ngonngubtn.click();
     }
     public void selectVoiceType(String type){
         uncheckAllCheckboxesType();
@@ -97,9 +80,10 @@ public class AddReadingVoice {
         WebElement loaigiong = driver.findElement(loaigiongtieuchuanLocator);
         loaigiong.click();
     }
-    public void selectVoiceUser(String User){
+    public void selectVoiceUser(String User) throws IOException {
         By chonguoiLocator = By.xpath("//button[@aria-label='"+ User +"']");
         WebElement chonnguoi = driver.findElement(chonguoiLocator);
+        captureScreen("SelectVoiceUser.png");
         chonnguoi.click();
     }
 }

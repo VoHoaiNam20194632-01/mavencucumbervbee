@@ -1,12 +1,13 @@
 package Pages;
 
 import driver.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class    LoginPage {
@@ -24,10 +25,11 @@ public class    LoginPage {
     By studio = By.xpath("//*[@id=\"__next\"]/main/div/div/div[2]/div/div[1]/div");
     By captchaLocator = By.id("recaptcha-anchor");
     By loginLocator = By.xpath("//button[contains(text(), 'Đăng nhập')]");
-    By xLocator = By.xpath("/html/body/div[6]/div[3]/div/div[1]/button");
-    By xxLocator = By.xpath("//*[@id=\"mui-61\"]/button");
-    By khongLocator = By.id("moe-dontallow_button");
-    By boquaLocator = By.xpath("//*[@id=\"react-joyride-step-0\"]/div/div/div[1]/div[3]/button/div/div");
+By khongLocator= By.xpath("/html/body/div[7]/div[3]/div/div[1]/button");
+    public void captureScreen(String name) throws IOException {
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("image\\Login\\" + name));
+    }
 
     public  LoginPage(WebDriver driver){
         this.driver = driver;
@@ -43,25 +45,20 @@ public class    LoginPage {
     public  void confirmCaptcha() throws InterruptedException {
         WebElement captcharbtn = driver.findElement(captchaLocator );
         captcharbtn .click();
-        Thread.sleep(20000);
+        Thread.sleep(70000);
     }
-    public  void clickLoginButton(){
+    public  void clickLoginButton() throws IOException {
         WebElement loginbtn = driver.findElement(loginLocator);
+        captureScreen("ClickLogin.png");
         loginbtn.click();
     }
-    public void clickStudioButton(){
+    public void clickStudioButton() throws IOException {
         WebElement studiobtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(studio));
+        captureScreen("PageStudio.png");
         studiobtn.click();
     }
-    public void clickNoButton(){
-        WebElement xbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xLocator));
+    public void clickNoButton() throws InterruptedException {
         WebElement khongbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(khongLocator));
         khongbtn.click();
-        xbtn.click();
-        System.out.println("bat dau tim xx");
-        WebElement xxbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(xxLocator));
-        xxbtn.click();
-        WebElement boquabtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(boquaLocator));
-        boquabtn.click();
     }
 }

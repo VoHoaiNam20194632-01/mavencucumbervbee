@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
             },
             glue = "StepDefinitions",
-            plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+            plugin = {"pretty", "json:target/cucumber-reports/reportt.json","pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
     )
     @Test
     public class addReadingAndAddText  extends AbstractTestNGCucumberTests {

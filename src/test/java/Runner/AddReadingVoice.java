@@ -5,11 +5,11 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
 @CucumberOptions(
         features = {
-                "src/test/resources/features/AddReadingVoice.feature",
+                "src/test/resources/features/textTransfer/AddReadingVoice.feature",
         },
         glue = "StepDefinitions",
 //        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
-        plugin = {"pretty", "html:target/cucumber-html-reports"}
+        plugin = {"pretty", "html:target/cucumber-html-reports","pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 @Test
 public class AddReadingVoice extends AbstractTestNGCucumberTests {

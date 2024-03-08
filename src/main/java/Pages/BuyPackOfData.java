@@ -45,7 +45,7 @@ public class BuyPackOfData {
         if (sosanh) {
             // Nếu nội dung là "cho duyet", thì thực hiện click và hủy
             Thread.sleep(1000);
-            WebElement namButton = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/div[2]/button[1]"));
+            WebElement namButton = driver.findElement(By.xpath("/html/body/div[8]/div[3]/div/div/div[2]/div[2]/button[1]"));
             namButton.click();
         }
     }
@@ -53,7 +53,7 @@ public class BuyPackOfData {
         WebElement muagoicuocbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(muagoicuocLocator));
         muagoicuocbtn.click();
         Thread.sleep(1000);
-        By goicuocLocator =By.xpath("//button[text()='" + months+ "' and .//span]");
+        By goicuocLocator =By.xpath("//input[value()='" + months+ "' and .//span]");
         Thread.sleep(1000);
         WebElement goicuocbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(goicuocLocator));
         goicuocbtn.click();
@@ -90,7 +90,6 @@ public class BuyPackOfData {
         Thread.sleep(2000);
         WebElement thanhtoanbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(thanhtoanLocator));
         thanhtoanbtn.click();
-
     }
     public void clickAgreeTransferButton() throws InterruptedException {
         Thread.sleep(2000);

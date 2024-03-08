@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
                 "src/test/resources/features/Login/LoginVbee.feature"
         },
         glue = "StepDefinitions",
-        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
+        plugin = {"pretty", "json:target/cucumber-reports/report.json","pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         tags= "@login"
 )
 
