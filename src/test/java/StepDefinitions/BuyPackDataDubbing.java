@@ -1,6 +1,6 @@
 package StepDefinitions;
 
-import Pages.Dubbing;
+import Pages.BuyPackData;
 import Pages.LoginPage;
 import driver.WebDriverManager;
 import io.cucumber.java.en.And;
@@ -19,23 +19,23 @@ public class BuyPackDataDubbing {
     }
     static Duration timeout50 = Duration.ofSeconds(50);
     static WebDriverWait wait50 = new WebDriverWait(driver, timeout50);
-    private Dubbing dubbing;
+    private BuyPackData dubbing;
 
     private LoginPage loginPage;
     @When("click buy pack of data dubbing button")
     public void clickBuyPackOfDataDubbingButton() {
-        dubbing = new Dubbing(driver);
-        dubbing.clickMuaGoiCuocbtn();
+        dubbing = new BuyPackData(driver);
+//        dubbing.clickMuaGoiCuocbtn();
 
     }
     @And("kiem tra xem du bon goi cuoc không")
     public void kiemTraXemDuBonGoiCuocKhông() {
         dubbing.kiemtradubongoicuoc();
     }
-    @And("chon ngan hang")
-    public void chonNganHang() {
-    dubbing.clickchonnganhang();
-    }
+//    @And("chon ngan hang")
+//    public void chonNganHang() {
+//    dubbing.clickchonnganhang();
+//    }
 
     @And("click Dong y thanh toan")
     public void clickDongYThanhToan() {
@@ -46,17 +46,17 @@ public class BuyPackDataDubbing {
     dubbing.clickToidachuyenkhoan();
     }
 
-    @And("chuyen sang trang lich su thanh toan")
-    public void chuyenSangTrangLichSuThanhToan() throws InterruptedException {
-    dubbing.kiemtramuathanhcongchua();
-    }
+//    @And("chuyen sang trang lich su thanh toan")
+//    public void chuyenSangTrangLichSuThanhToan() throws InterruptedException {
+//    dubbing.kiemtramuathanhcongchua();
+//    }
     @And("chon goi mien phi")
-    public void chonGoiMienPhi() {
-    dubbing.clickchongoimienphi();
-    }
+//    public void chonGoiMienPhi() {
+//    dubbing.clickchongoimienphi();
+//    }
     @Then("khong hien thi banner ngang cap")
     public void khongHienThiBannerNgangCap() {
-        dubbing = new Dubbing(driver);
+        dubbing = new BuyPackData(driver);
         dubbing.checkbannernangcapkhongxuathien();
     }
     @And("Select package tieu chuan dubbing")
@@ -77,7 +77,7 @@ public class BuyPackDataDubbing {
 
     @Then("hien thi banner nang cap")
     public void hienThiBannerNangCap() throws InterruptedException {
-        dubbing = new Dubbing(driver);
+        dubbing = new BuyPackData(driver);
         dubbing.checkbannernangcapxuathien();
         driver.navigate().refresh();
         loginPage = new LoginPage(driver);
@@ -85,14 +85,17 @@ public class BuyPackDataDubbing {
 
     }
 
-    @And("xem thoi luong")
-    public void xemThoiLuong() {
-        dubbing.layketquathoiluongconlai();
-    }
+//    @And("xem thoi luong")
+//    public void xemThoiLuong() {
+//        dubbing.layketquathoiluongconlai();
+//    }
+//
+//    @And("lay thoi luong srt")
+//    public void layThoiLuongSrt() {
+//        dubbing = new BuyPackDataSteps(driver);
+//        dubbing.laythoiluongsrt();
+//    }
 
-    @And("lay thoi luong srt")
-    public void layThoiLuongSrt() {
-        dubbing = new Dubbing(driver);
-        dubbing.laythoiluongsrt();
-    }
+
+
 }

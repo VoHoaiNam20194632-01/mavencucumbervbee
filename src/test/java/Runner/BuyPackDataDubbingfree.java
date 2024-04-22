@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
 @CucumberOptions(
         features = {
-                "src/test/resources/features/BuyPackOfData/BuyPackOfDataDubbingfree.feature"
+                "src/test/resources/features/BuyPackOfData/BuyPackOfDataStudioFree.feature"
         },
         glue = "StepDefinitions",
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}

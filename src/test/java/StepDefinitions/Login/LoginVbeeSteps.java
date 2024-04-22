@@ -1,4 +1,4 @@
-package StepDefinitions;
+package StepDefinitions.Login;
 
 import Pages.LoginPage;
 import driver.WebDriverManager;
@@ -11,16 +11,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v117.network.Network;
-import org.openqa.selenium.devtools.v117.network.model.Response;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
 
 public class LoginVbeeSteps {
 
@@ -29,35 +24,43 @@ public class LoginVbeeSteps {
     static {
         driver = WebDriverManager.getDriver();
     }
-    public static void checkAPI() {
-        // Setup WebDriver
-
-        DevTools devTools = ((ChromeDriver) driver).getDevTools();
-        devTools.createSession();
-
-        // Enable network domain
-        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
-
-        // Set up event listener for responseReceived
-        devTools.addListener(Network.responseReceived(), responseReceived -> {
-            Response response = responseReceived.getResponse();
-            int status = response.getStatus();
-            if (status  >= 400) {
-                LogToFile.log("Request URL: " + response.getUrl() + " returned status code: " + status);
-            }
-        });
-    }
+//    public static void checkAPI() {
+//        // Setup WebDriver
+//
+//        DevTools devTools = ((ChromeDriver) driver).getDevTools();
+//        devTools.createSession();
+//
+//        // Enable network domain
+//        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+//
+//        // Set up event listener for responseReceived
+//        devTools.addListener(Network.responseReceived(), responseReceived -> {
+//            Response response = responseReceived.getResponse();
+//            int status = response.getStatus();
+//            if (status  >= 400) {
+//                LogToFile.log("Request URL: " + response.getUrl() + " returned status code: " + status);
+//            }
+//        });
+//    }
 
 private LoginPage loginPage;
     @Given("user is on login page")
     public void userIsOnLoginPage() {
             // Thực hiện các thao tác kiểm thử
             System.out.println("inside Step - user is on login page vbee");
-            driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fdev-studio.vbee.vn%2Fdubbing&state=9b59f85e-91ee-4d07-8877-3de2ea15aa6b&response_mode=fragment&response_type=code&scope=openid&nonce=41e1f226-01e2-42bc-aee4-d49437d61b37");
+            driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fdev-studio.vbee.vn%2Fstudio%2Ftext-to-speech&state=0c021e5f-9aaa-4c4d-88d9-ade550fe12c7&response_mode=fragment&response_type=code&scope=openid&nonce=d59fd6ea-8bc1-4aba-91ab-3f3a8f0126a8");
             loginPage = new LoginPage(driver);
             // Nếu có lỗi, ghi log
     }
-
+//    @When("click Login button")
+//    public void clickLoginButton() throws IOException {
+//    loginPage.clickLoginbtn();
+//    }
+//
+//    @And("click AI Voice Stuio button")
+//    public void clickAIVoiceStuioButton() {
+//        loginPage.clickAivoiceStudiobtn();
+//    }
     @When("^user enters (.*) and (.*)$")
     public void userEntersUsernameAndPassword(String username, String password) throws InterruptedException {
         System.out.println("Inside Step - user enters username and password");
@@ -76,7 +79,7 @@ private LoginPage loginPage;
 
     @And("click on login button")
     public void clickOnLoginButton() throws InterruptedException, IOException {
-        loginPage.clickLoginButton();
+        loginPage.clickLogin();
 
 
     }
@@ -97,7 +100,7 @@ private LoginPage loginPage;
     }
     @Then("user is navigated to the home page")
     public void userIsNavigatedToTheHomePage() throws IOException {
-        String expectedUrl = "https://dev-studio.vbee.vn/dubbing";
+        String expectedUrl = "https://dev-studio.vbee.vn/studio/text-to-speech";
         String currentUrl = driver.getCurrentUrl();
 
         if (currentUrl.equals(expectedUrl)) {
@@ -117,7 +120,42 @@ private LoginPage loginPage;
         FileUtils.copyFile(screenshot, new File("image\\Login\\" + name));
     }
 
+    @When("the user enters an invalid {string} username")
+    public void theUserEntersAnInvalidUsername(String username) {
+        loginPage.enterUsername(username);
+    }
 
+    @And("enters a valid {string} password")
+    public void entersAValidPassword(String password) {
+        loginPage.enterPassword(password);
+    }
+
+    @Then("an error message should be displayed")
+    public void anErrorMessageShouldBeDisplayed() {
+        loginPage.ErrorMessage();
+    }
+
+    @And("the user should not be logged in")
+    public void theUserShouldNotBeLoggedIn() {
+        loginPage.NotBeLoggedIn();
+    }
+
+    @When("the user enters a valid username {string}")
+    public void theUserEntersAValidUsername(String username) {
+        loginPage.enterUsername(username);
+
+    }
+
+    @And("enters an invalid password {string}")
+    public void entersAnInvalidPassword(String password) {
+        loginPage.enterPassword(password);
+    }
+
+    @When("the user leaves the username {string} field and password {string}field empty")
+    public void theUserLeavesTheUsernameFieldAndPasswordFieldEmpty(String username, String password) {
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+    }
     private static class LogToFile {
         private static final String FILE_PATH = "image\\excel\\log.txt";
 

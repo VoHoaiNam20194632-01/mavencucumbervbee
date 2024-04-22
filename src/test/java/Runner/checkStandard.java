@@ -5,13 +5,13 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
 @CucumberOptions(
         features = {
-                "src/test/resources/features/BuyPackDataSteps/AddTextAndSelectUserReadingVoice.feature",
+                "src/test/resources/features/textTranfer/standard/checkStandard.feature"
 
         },
         glue = "StepDefinitions",
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 @Test
-public class Dubbing extends AbstractTestNGCucumberTests {
+public class checkStandard extends AbstractTestNGCucumberTests {
 
 }

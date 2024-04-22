@@ -1,6 +1,6 @@
 package StepDefinitions;
 
-import Pages.Dubbing;
+import Pages.BuyPackData;
 import driver.WebDriverManager;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.WebDriver;
@@ -18,10 +18,10 @@ public class DubbingSteps {
     static Duration timeout50 = Duration.ofSeconds(50);
 
     static WebDriverWait wait50 = new WebDriverWait(driver, timeout50);
-    private Dubbing dubbing;
+    private BuyPackData dubbing;
     @And("click upload files {string} from computer")
     public void clickUploadFilesFromComputer(String Files) throws InterruptedException, AWTException {
-        dubbing = new Dubbing(driver);
+        dubbing = new BuyPackData(driver);
         dubbing.AddFileSubTitle(Files);
 
     }

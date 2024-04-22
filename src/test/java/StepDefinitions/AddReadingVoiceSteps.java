@@ -1,17 +1,14 @@
 package StepDefinitions;
 
-import Pages.textTransfer.AddReadingVoice;
+import Pages.textTransfer.textTransfer;
 import driver.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v117.network.Network;
-import org.openqa.selenium.devtools.v117.network.model.Response;
 
 import java.io.IOException;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class AddReadingVoiceSteps {
     private static WebDriver driver;
@@ -20,61 +17,47 @@ public class AddReadingVoiceSteps {
         driver = WebDriverManager.getDriver();
     }
 
-    private AddReadingVoice addReadingVoice;
-    public static void check() {
-        // Setup WebDriver
-
-        DevTools devTools = ((ChromeDriver) driver).getDevTools();
-        devTools.createSession();
-
-        // Enable network domain
-        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
-
-        // Set up event listener for responseReceived
-        devTools.addListener(Network.responseReceived(), responseReceived -> {
-            Response response = responseReceived.getResponse();
-            int status = response.getStatus();
-            if (status >= 400) {
-                System.out.println("Request URL: " + response.getUrl() + " returned status code: " + status);
-            }
-        });
+    private textTransfer TextTransfer;
+    public void setUp(){
+        TextTransfer = new textTransfer(driver);
+    }
+    @And("Nhap tieu de {string}")
+    public void nhapTieuDe(String tieude) {
+        String NhapNoiDungTieuDe = tieude + LocalTime.now() + LocalDateTime.now();
+        System.out.println(TextTransfer);
+        setUp();
+        TextTransfer.ChonTieuDe(NhapNoiDungTieuDe);
+    }
+    @And("Nhap van ban can chuyen doi dung thiet ke")
+    public void nhapVanBanCanChuyenDoiDungThietKe() {
+        TextTransfer.nhapVanBanDungYeuCau();
     }
 
-    @And("click reading voice button")
-    public void clickReadingVoiceButton() throws InterruptedException, IOException {
-        addReadingVoice = new AddReadingVoice(driver);
-        Thread.sleep(3000);
-        addReadingVoice.ReadingButton();
-        check();
+
+    @And("Click button chuyen van ban")
+    public void clickButtonChuyenVanBan() {
 
     }
-    @And("select {string} gender")
-    public void selectGender(String gender) throws InterruptedException, IOException {
-        this.addReadingVoice = new AddReadingVoice(driver); // hoặc tương tự
-        System.out.println("Bắt đầu kiểm tra");
-        Thread.sleep(1000);
-        addReadingVoice.selectGender(gender);
-        System.out.println("Bắt đầu kiểm tra 1");
-        check();
+
+    @Then("Tai xuong audio voi {string} vua chuyen van ban thanh cong")
+    public void taiXuongAudioVoiVuaChuyenVanBanThanhCong(String tieude) {
     }
 
-    @And("click select voice {string} type button")
-    public void clickSelectVoiceTypeStandardButton(String type)  throws InterruptedException {
-        Thread.sleep(3000);
-        addReadingVoice.selectVoiceType(type);
-        check();
+    @And("Chọn giong doc tieu chuan {string},")
+    public void chọnGiongDocTieuChuan(String user) throws IOException {
+        textTransfer.selectVoiceType("STANDARD");
+        textTransfer.selectVoiceUser(user);
     }
 
-    @And("click select voice {string} user button")
-    public void clickSelectVoiceUserButton( String User) throws InterruptedException, IOException {
-        Thread.sleep(3000);
-        addReadingVoice.selectVoiceUser(User);
-        check();
+    @And("toc do doc {string}, dinh dang audio{string}, nhac nen {string}")
+    public void tocDoDocDinhDangAudioNhacNen(String tocdo, String dingdang, String nhacnen) {
+        textTransfer.nhapTocDoVanBan(tocdo);
+        textTransfer.DingDang(dingdang);
+        textTransfer.NhacNen(nhacnen);
     }
 
-    @Then("has been completed add reading voice")
-    public void hasBeenCompletedAddReadingVoice() {
-        check();
+    @And("chon giong doc")
+    public void chonGiongDoc() throws IOException {
+        textTransfer.ReadingButton();
     }
-
 }
