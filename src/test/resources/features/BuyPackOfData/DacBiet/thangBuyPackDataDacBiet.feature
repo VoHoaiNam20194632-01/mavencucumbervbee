@@ -13,7 +13,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước DAC BIET
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" phan tram and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 # chuyen sang trang lich su thanh toan
@@ -26,8 +26,8 @@ Feature: Purchase Package
     And check han su dung <thang>
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                 | kyTuGoiThangDacBiet        |thang       | tengoi|
-      |GIAM%TIEN         | 1000000                                | 30            | Đặc biệt - Tháng |
+      |voucher                |giatrigoicuoc | kyTuGoiThangDacBiet        |thang       | tengoi|
+      |5%                     | 799000 | 1000000                                | 30            | Đặc biệt - Tháng |
 
 #    GIAM TIEN
   Scenario Outline: User purchases the DAC BIET package month và chọn voucher GIAM TIEN
@@ -57,7 +57,7 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                  | kyTuGoiThangDacBiet    | thang | tengoi                         |
-      | HUONGGIAM55 | 1000000                               | 30       | Đặc biệt - Tháng |
+      | 5k | 1000000                               | 30       | Đặc biệt - Tháng |
 
 #    TANG KY TU
   Scenario Outline: User purchases the DAC BIET package month và chọn voucher TANG KY TU
@@ -87,4 +87,4 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                  | kyTuGoiThangDacBiet    | thang | tengoi                         |
-      | HUONGGIAM55 | 1000000                             | 30       | Đặc biệt - Tháng |
+      | X2 | 2000000                             | 30       | Đặc biệt - Tháng |

@@ -1,7 +1,7 @@
 package StepDefinitions;
 
-import Pages.BuyPackData;
-import Pages.LoginPage;
+import Pages.BuyData.BuyPackData;
+import Pages.Login.LoginPage;
 import driver.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

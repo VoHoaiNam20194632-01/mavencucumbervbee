@@ -1,21 +1,20 @@
 package StepDefinitions.Login;
 
-import Pages.LoginPage;
+import Pages.Login.LoginPage;
 import driver.WebDriverManager;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.io.FileWriter;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.time.Duration;
 
 public class LoginVbeeSteps {
 
@@ -24,82 +23,85 @@ public class LoginVbeeSteps {
     static {
         driver = WebDriverManager.getDriver();
     }
-//    public static void checkAPI() {
-//        // Setup WebDriver
-//
-//        DevTools devTools = ((ChromeDriver) driver).getDevTools();
-//        devTools.createSession();
-//
-//        // Enable network domain
-//        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
-//
-//        // Set up event listener for responseReceived
-//        devTools.addListener(Network.responseReceived(), responseReceived -> {
-//            Response response = responseReceived.getResponse();
-//            int status = response.getStatus();
-//            if (status  >= 400) {
-//                LogToFile.log("Request URL: " + response.getUrl() + " returned status code: " + status);
-//            }
-//        });
-//    }
 
-private LoginPage loginPage;
+    Duration timeout50 = Duration.ofSeconds(50);
+    WebDriverWait wait50 = new WebDriverWait(driver, timeout50);
+    private LoginPage loginPage;
+
     @Given("user is on login page")
-    public void userIsOnLoginPage() {
-            // Thực hiện các thao tác kiểm thử
-            System.out.println("inside Step - user is on login page vbee");
-            driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fdev-studio.vbee.vn%2Fstudio%2Ftext-to-speech&state=0c021e5f-9aaa-4c4d-88d9-ade550fe12c7&response_mode=fragment&response_type=code&scope=openid&nonce=d59fd6ea-8bc1-4aba-91ab-3f3a8f0126a8");
-            loginPage = new LoginPage(driver);
-            // Nếu có lỗi, ghi log
+    public void userIsOnLoginPage() throws InterruptedException, IOException {
+        // Thực hiện các thao tác kiểm thử
+        System.out.println("inside Step - user is on login page vbee");
+        driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fdev-studio.vbee.vn%2Fstudio%2Ftext-to-speech&state=0c021e5f-9aaa-4c4d-88d9-ade550fe12c7&response_mode=fragment&response_type=code&scope=openid&nonce=d59fd6ea-8bc1-4aba-91ab-3f3a8f0126a8");
+        loginPage = new LoginPage(driver);
+        Dimension size = driver.manage().window().getSize();
+
+        // In ra kích thước
+        System.out.println("Chiều rộng của cửa sổ: " + size.getWidth());
+        System.out.println("Chiều cao của cửa sổ: " + size.getHeight());
+        captureScreenshot("den trang login");
+        // Nếu có lỗi, ghi log
     }
-//    @When("click Login button")
-//    public void clickLoginButton() throws IOException {
-//    loginPage.clickLoginbtn();
-//    }
-//
-//    @And("click AI Voice Stuio button")
-//    public void clickAIVoiceStuioButton() {
-//        loginPage.clickAivoiceStudiobtn();
-//    }
+
+    @And("dang nhap bang gg")
+    public void dangNhapBangGg() throws InterruptedException, IOException {;
+        WebElement gg = driver.findElement(By.id("social-google"));
+        gg.click();
+        captureScreenshot("nhap email");
+        WebElement email = driver.findElement(By.id("identifierId"));
+        email.sendKeys("namvh@vbee.ai");
+        System.out.println(driver);
+        email.sendKeys(Keys.ENTER);
+        Thread.sleep(5000);
+        System.out.println("den day roi me a");
+        System.out.println(driver);
+//        String dom = (String) ((JavascriptExecutor) driver).executeScript("return document.documentElement.outerHTML;");
+//        System.out.println("DOM:");
+//        System.out.println(dom);
+//        WebElement pw = driver.findElement(By.id("password"));
+//                WebElement pw = driver.findElement(By.xpath("//*[@i=\"password\"]/div[1]/div/div[1]/input"));
+        captureScreenshot("nhap password");
+        WebElement pw = driver.findElement(By.name("Passwd"));
+        pw.click();
+        pw.click();
+//        *[@id="password"]/div[1]/div/div[1]/input
+        System.out.println("den day roi me a 1");
+        Thread.sleep(5000);
+        String pass = "24081201Nam@";
+        pw.sendKeys(pass);
+        System.out.println("den day roi me a 2");
+        pw.sendKeys(Keys.ENTER);
+        System.out.println("den day roi me a 3");
+    }
+
     @When("^user enters (.*) and (.*)$")
     public void userEntersUsernameAndPassword(String username, String password) throws InterruptedException {
         System.out.println("Inside Step - user enters username and password");
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
-
     }
 
     @And("confirm captcha")
-    public void confirmCaptcha() throws InterruptedException {
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
-        loginPage.confirmCaptcha();
-        driver.switchTo().defaultContent();
+    public void confirmCaptcha() throws Exception {
+//        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
+//        loginPage.confirmCaptcha();
+//        driver.switchTo().defaultContent();
 
     }
 
     @And("click on login button")
     public void clickOnLoginButton() throws InterruptedException, IOException {
         loginPage.clickLogin();
-
-
-    }
-
-    @And("click on studio button")
-    public void clickOnStudioButton() throws InterruptedException, IOException {
-        System.out.println("dang tim thay studio");
-        loginPage.clickStudioButton();
-
-
     }
 
     @And("click No")
     public void clickNo() throws InterruptedException {
         System.out.println("bat dau tim x");
         loginPage.clickNoButton();
-
     }
+
     @Then("user is navigated to the home page")
-    public void userIsNavigatedToTheHomePage() throws IOException {
+    public void userIsNavigatedToTheHomePage() throws IOException {;
         String expectedUrl = "https://dev-studio.vbee.vn/studio/text-to-speech";
         String currentUrl = driver.getCurrentUrl();
 
@@ -110,25 +112,23 @@ private LoginPage loginPage;
             driver.navigate().to(expectedUrl);
             System.out.println("Đã điều hướng đến trang chủ (dubbing)!");
         }
-
-        captureScreen("HomePage.png");
-
+        captureScreenshot("trang AIVOICE");
     }
 
-    public void captureScreen(String name) throws IOException {
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("image\\Login\\" + name));
-    }
+//    public void captureScreen(String name) throws IOException {
+//        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//        FileUtils.copyFile(screenshot, new File("image\\Login\\" + name));
+//    }
 
-    @When("the user enters an invalid {string} username")
-    public void theUserEntersAnInvalidUsername(String username) {
-        loginPage.enterUsername(username);
-    }
-
-    @And("enters a valid {string} password")
-    public void entersAValidPassword(String password) {
-        loginPage.enterPassword(password);
-    }
+//    @When("the user enters an invalid {string} username")
+//    public void theUserEntersAnInvalidUsername(String username) {
+//        loginPage.enterUsername(username);
+//    }
+//
+//    @And("enters a valid {string} password")
+//    public void entersAValidPassword(String password) {
+//        loginPage.enterPassword(password);
+//    }
 
     @Then("an error message should be displayed")
     public void anErrorMessageShouldBeDisplayed() {
@@ -156,15 +156,19 @@ private LoginPage loginPage;
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
     }
-    private static class LogToFile {
-        private static final String FILE_PATH = "image\\excel\\log.txt";
 
-        public static void log(String message) {
-            try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH, true))) {
-                writer.println(message);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    @After
+    public void TearDown(Scenario scenario) {
+        if (
+                scenario.isFailed()
+        ) {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Screenshot", new ByteArrayInputStream(screenshot));
         }
+
+    }
+    public void captureScreenshot(String stepName) throws IOException {
+        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment(stepName, new ByteArrayInputStream(screenshot));
     }
 }

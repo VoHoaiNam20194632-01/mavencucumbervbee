@@ -12,7 +12,7 @@ Feature: Purchase Package
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
     And ramdom bank
-    And select voucher "<voucher>" phan tram and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
 #  thực hiện chon khuyen mai và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -27,8 +27,8 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
 
     Examples:
-      | voucher             | kyTuGoiQuyTieuChuan | quy         | tengoi                    |
-      | GIAM%TIEN     | 900000                              | 90          |  Tiêu chuẩn - Quý |
+      | voucher            | giatrigoicuoc | kyTuGoiQuyTieuChuan | quy         | tengoi                    |
+      | 5%       |520000| 900000                              | 90          |  Tiêu chuẩn - Quý |
 
 #GIAM TIEN
   Scenario Outline: User purchases the standard package QUY và chọn voucher giam tien
@@ -58,7 +58,7 @@ Feature: Purchase Package
 
     Examples:
       | voucher             | kyTuGoiQuyTieuChuan | quy         | tengoi                    |
-      | GIAM%TIEN     | 900000                              | 90          |  Tiêu chuẩn - Quý |
+      | 5k     | 900000                              | 90          |  Tiêu chuẩn - Quý |
 
 #TANG KY TU
   Scenario Outline: User purchases the standard package QUY và chọn voucher tang ky tu
@@ -88,4 +88,4 @@ Feature: Purchase Package
 
     Examples:
       | voucher             | kyTuGoiQuyTieuChuan | quy         | tengoi                    |
-      | GIAM%TIEN     | 900000                              | 90          | Tiêu chuẩn - Quý |
+      | X2     | 1800000                              | 90          | Tiêu chuẩn - Quý |

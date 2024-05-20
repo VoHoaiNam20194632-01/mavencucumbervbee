@@ -22,13 +22,6 @@
             <version>4.15.0</version>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>5.6.2</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -95,13 +88,6 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
@@ -121,18 +107,6 @@
             <artifactId>json</artifactId>
             <version>20231013</version>
         </dependency>
-        <!--        <dependency>-->
-<!--            <groupId>io.qameta.allure</groupId>-->
-<!--            <artifactId>allure-cucumber7-jvm</artifactId>-->
-<!--            <version>2.24.0</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.qameta.allure/allure-testng &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.qameta.allure</groupId>-->
-<!--            <artifactId>allure-testng</artifactId>-->
-<!--            <version>2.24.0</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
@@ -189,23 +163,77 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.7.0</version>
+            <version>5.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>4.15.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.27.0</version>
         </dependency>
 
-
-
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v85 -->
     </dependencies>
     <build>
+
         <plugins>
-            <!-- ... Các plugins khác ... -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/datn</directory>
+                            <includes>
+                                <include>allure-results</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!-- Call Suite name -->
+<!--                        <suiteXmlFile> ${project.basedir}/src/test/resources/testNG/testLogins.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\TtsTieuChuan.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyTieuChuan.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyChuyenNghiep.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyDacBiet.xml </suiteXmlFile>-->
+                        <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+<!--                    <argLine>-->
+<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar"-->
+<!--                    </argLine>-->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <systemPropertyVariables>
+                        <allure.results.directory>target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
-                <configuration>
-                    <reportVersion>2.7.0</reportVersion>
-                </configuration>
+                <version>2.10.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
+
         </plugins>
     </build>
 </project>

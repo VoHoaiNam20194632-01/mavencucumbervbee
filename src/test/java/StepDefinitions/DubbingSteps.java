@@ -1,6 +1,6 @@
 package StepDefinitions;
 
-import Pages.BuyPackData;
+import Pages.BuyData.BuyPackData;
 import driver.WebDriverManager;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.WebDriver;

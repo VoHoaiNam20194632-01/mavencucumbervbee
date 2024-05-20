@@ -1,9 +1,12 @@
 package driver;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.concurrent.TimeUnit;
 
 public class WebDriverManager {
     private static WebDriver driver;
@@ -16,17 +19,19 @@ public class WebDriverManager {
             String proxyString = proxyAddress + ":" + proxyPort;
             proxy.setHttpProxy(proxyString);
             proxy.setSslProxy(proxyString);
-
-            // Cấu hình ChromeOptions với proxy
             ChromeOptions chromeOptions = new ChromeOptions();
-//            chromeOptions.addArguments("--headless"); // Chạy ở chế độ ngầm
+            Dimension windowSize = new Dimension(1532, 880);
+            chromeOptions.addArguments("--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight());
+//            chromeOptions.addArguments("--headless=new"); // Chạy ở chế độ ngầm
 //            chromeOptions.addArguments("--disable-gpu"); // Tắt GPU acceleration trong headless mode
-
             // Cài đặt đường dẫn đến driver
             chromeOptions.setCapability("proxy", proxy);
-            // Khởi tạo WebDriver nếu chưa tồn tại
+
             driver = new ChromeDriver(  chromeOptions);
-            driver.manage().window().maximize();
+
+            Dimension windowSize1 = new Dimension(1500, 800); // Kích thước cửa sổ mới (chiều rộng x chiều cao)
+            driver.manage().window().setSize(windowSize1); // Thiết lập kích thước cửa sổ
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
         return driver;
     }

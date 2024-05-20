@@ -1,4 +1,4 @@
-@SmokeFeature
+
 Feature: Purchase Package
 #  PHAN TRAM
   Scenario Outline: User purchases the standard package  month và chọn voucher %
@@ -13,7 +13,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước tiêu chuẩn
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" phan tram and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -26,8 +26,8 @@ Feature: Purchase Package
     And check han su dung <thang>
     And check ten goi cuoc sau khi mua "<tengoi>"
 Examples:
-    |voucher                 | kyTuGoiThangTieuChuan |thang       | tengoi|
-    |GIAM%TIEN         | 300000                                | 30            | Tiêu chuẩn - Tháng |
+    |voucher              | giatrigoicuoc  | kyTuGoiThangTieuChuan |thang       | tengoi|
+    |5%     |199000 | 300000                                | 30            | Tiêu chuẩn - Tháng |
 
 #    GIAM TIEN
   Scenario Outline: User purchases the standard package month và chọn voucher GIAM TIEN
@@ -57,7 +57,7 @@ Examples:
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                | kyTuGoiThangTieuChuan | thang | tengoi |
-      | HUONGGIAM55 | 300000                                | 30       | Tiêu chuẩn - Tháng |
+      | 5K | 300000                                | 30       | Tiêu chuẩn - Tháng |
 
 #    TANG KY TU
   Scenario Outline: User purchases the standard package month và chọn voucher TANG KY TU
@@ -73,11 +73,11 @@ Examples:
     And ramdom bank
     #ramdom ngan hang
     And select voucher "<voucher>" tang ky tu and pay
-#  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
+#  thực hiện chon khuyen mai tang ky tu và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
-##chuyen sang trang lich su thanh toan
+#chuyen sang trang lich su thanh toan
     And the system displays a successful purchase confirmation
-## chuyển qua duyệt đơn hàng và hệ thống hiển thị xác nhận mua thành công
+# chuyển qua duyệt đơn hàng và hệ thống hiển thị xác nhận mua thành công
     And return to home page
     # Quay về trang chủ
     And Check the added character after purchasing the package"<kyTuGoiThangTieuChuan>"
@@ -87,4 +87,4 @@ Examples:
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                | kyTuGoiThangTieuChuan | thang | tengoi |
-      | HUONGGIAM55 | 300000                                | 30       | Tiêu chuẩn - Tháng |
+      | X2 | 600000                                | 30       | Tiêu chuẩn - Tháng |

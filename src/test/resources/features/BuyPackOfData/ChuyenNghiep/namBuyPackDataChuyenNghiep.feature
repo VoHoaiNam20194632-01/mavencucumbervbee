@@ -1,7 +1,7 @@
 @SmokeFeature
 Feature: Purchase Package
 #  PHAN TRAM
-  Scenario Outline: User purchases the d package  month và chọn voucher %
+  Scenario Outline: User purchases CHUYEN NGHIEP package  NAM và chọn voucher %
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
@@ -13,7 +13,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyên nghiệp
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" phan tram and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -26,11 +26,11 @@ Feature: Purchase Package
     And check han su dung <nam>
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                 | kyTuGoiNamChuyenNghiep       |nam     | tengoi|
-      |GIAM%TIEN         | 6000000                            | 365           | Chuyên nghiệp - Năm|
+      |voucher                | giatrigoicuoc | kyTuGoiNamChuyenNghiep       |nam     | tengoi|
+      |5%                     | 3799000  | 6000000                            | 365           | Chuyên nghiệp - Năm|
 
 #    GIAM TIEN
-  Scenario Outline: User purchases the standard package month và chọn voucher GIAM TIEN
+  Scenario Outline: User purchases CHUYEN NGHIEP package NAM và chọn voucher GIAM TIEN
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
@@ -57,10 +57,10 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                  | kyTuGoiNamChuyenNghiep    | nam     | tengoi                         |
-      | GIAM%TIEN  | 6000000                        | 360       | Chuyên nghiệp - Năm |
+      | 5K  | 6000000                        | 365       | Chuyên nghiệp - Năm |
 
 #    TANG KY TU
-  Scenario Outline: User purchases the standard package month và chọn voucher TANG KY TU
+  Scenario Outline: User purchases CHUYEN NGHIEP package NAM và chọn voucher TANG KY TU
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
@@ -87,4 +87,4 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                  | kyTuGoiNamChuyenNghiep   | nam | tengoi                         |
-      | GIAM%TIEN  |6000000                         | 360        | Chuyên nghiệp - Năm |
+      | X2  |12000000                         | 365        | Chuyên nghiệp - Năm |
