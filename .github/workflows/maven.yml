@@ -30,6 +30,8 @@ jobs:
          
     - name: Install dependencies
       run: mvn dependency:go-offline compile compiler:testCompile
+    - name: Run specific test suites
+      run: mvn test
 
     - name: Run Test
       if: always()
