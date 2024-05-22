@@ -31,7 +31,7 @@ jobs:
     - name: Install dependencies
       run: mvn dependency:go-offline compile compiler:testCompile
     - name: Run specific test suites
-      run: mvn test -Dtest=testLogins,testBuyTieuChuan
+      run: mvn test -Dtest=testLogins.xml,testBuyTieuChuan.xml
 
 
     - name: Run Test
