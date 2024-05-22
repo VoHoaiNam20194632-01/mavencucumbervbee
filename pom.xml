@@ -208,7 +208,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!-- Call Suite name -->
-                             <suiteXmlFile>${project.basedir}\src\test\resources\testNG\${suiteFile}.xml</suiteXmlFile>
+                             <suiteXmlFile>${project.basedir}\src\test\resources\testNG\${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
