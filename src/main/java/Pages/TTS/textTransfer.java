@@ -7,12 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+
 public class textTransfer {
     private static WebDriver driver;
 
@@ -114,12 +113,12 @@ public class textTransfer {
     public void addLinkVanBan(String link) throws InterruptedException {
         WebElement taiLen = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label='Tải tệp lên hoặc nhập web link']")));
         taiLen.click();
-        WebElement taiLinkWeb = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/li[1]")));
+        WebElement taiLinkWeb = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/li[1]")));
         taiLinkWeb.click();
-        WebElement dienLink = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/div/div[1]/div/div[1]/div/input")));
+        WebElement dienLink = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/div/div[1]/div/div[1]/div/input")));
         dienLink.sendKeys(link);
         Thread.sleep(3000);
-        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/button")));
+        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/div/div[2]/button")));
         tiepTuc.click();
         LaySoKyTuTaiKhoanDaCo();
         System.out.println("So ky tu ban dau" +soKyTuBanDau);
@@ -129,27 +128,29 @@ public class textTransfer {
         taiLen.click();
         WebElement taiFileTxt = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/li[3]")));
         taiFileTxt.click();
-        WebElement chonFile = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Chọn file']")));
-        chonFile.click();
-        String filePath = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\Text\\" + file;
-        // Gửi đường dẫn file đến clipboard
-        StringSelection stringSelection = new StringSelection(filePath);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-        // Sử dụng Robot Class để tương tác với cửa sổ hộp thoại tải file
-        Robot robot = new Robot();
-        Thread.sleep(3000);
-        // Paste đường dẫn từ clipboard
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        Thread.sleep(3000);
-        // Nhấn Enter để xác nhận tải file
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        // Chờ một khoảng thời gian để file tải lên
-        Thread.sleep(5000);
-        Thread.sleep(3000);
+//        WebElement chonFile = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Chọn file']")));
+//        chonFile.click();
+        String filePath = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\Text\\" + file+".txt";
+//        // Gửi đường dẫn file đến clipboard
+//        StringSelection stringSelection = new StringSelection(filePath);
+//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+//        // Sử dụng Robot Class để tương tác với cửa sổ hộp thoại tải file
+//        Robot robot = new Robot();
+//        Thread.sleep(3000);
+//        // Paste đường dẫn từ clipboard
+//        robot.keyPress(KeyEvent.VK_CONTROL);
+//        robot.keyPress(KeyEvent.VK_V);
+//        robot.keyRelease(KeyEvent.VK_V);
+//        robot.keyRelease(KeyEvent.VK_CONTROL);
+//        Thread.sleep(3000);
+//        // Nhấn Enter để xác nhận tải file
+//        robot.keyPress(KeyEvent.VK_ENTER);
+//        robot.keyRelease(KeyEvent.VK_ENTER);
+//        // Chờ một khoảng thời gian để file tải lên
+//        Thread.sleep(5000);
+//        Thread.sleep(3000);
+        WebElement taifile = driver.findElement(By.xpath("//input[@type='file']"));
+        taifile.sendKeys(filePath);
         WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/button")));
         tiepTuc.click();
         LaySoKyTuTaiKhoanDaCo();
@@ -169,15 +170,17 @@ public class textTransfer {
         chonDinhDang.click();
     }
     public static void NhacNen(String nhacnen) throws IOException, InterruptedException {
+        String File = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\music\\" + nhacnen;
         WebElement nhacNenBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"request-editor\"]/div/div[3]/div/div[1]/div[4]/button")));
         nhacNenBtn.click();
         Thread.sleep(2000);
-        WebElement chonNhacNen = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[p[contains(text(),'"+nhacnen+"')]]")));
-        chonNhacNen.click();
-
+       WebElement tainhacBtn = driver.findElement(By.id("upload-music-file"));
+       tainhacBtn.sendKeys(File);
+       WebElement Upload = driver.findElement(By.xpath("//button[contains(text(),'upload')]"));
+       Upload.click();
         WebElement BtnApDung = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), 'Áp dụng')]")));
         BtnApDung.click();
-
+        Thread.sleep(7000);
     }
     public  static void clickBtnChuyenVanBan(){
         WebElement BtnChuyenVanBan = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.id("convert-tts")));
@@ -206,7 +209,6 @@ public class textTransfer {
     public  static void clickBtnTaiXuong(){
         WebElement TaiXuongLocator = wait200.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"request-editor\"]/div/div[1]/div[2]/div[2]/div[1]")));
         TaiXuongLocator.click();
-        driver.switchTo().activeElement().sendKeys("C:\\Users\\VO HOAI NAM\\Downloads\\audioVbee" + Keys.ENTER);
     }
     public static void ReadingButton() throws IOException {
         WebElement giongdocbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(chonbtngiongdocLocator));

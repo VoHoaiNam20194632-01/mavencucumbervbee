@@ -1,8 +1,8 @@
-Feature: Chuyển văn bản thành giọng nói với gói chuyên nghiệp
+Feature: Chuyển văn bản thành giọng nói với gói đặc biệt
   Scenario Outline: Chuyển văn bản thành giọng nói thành công
     Given user is navigated to the home page
     And Nhap tieu de "<tieude>"
-    And Nhap file "<file>"can chuyen doi
+    And Nhap link "<link>" can chuyen doi
     And chon giong doc
     And Chọn giong doc nuoc ngoai "<giongnuocngoai>"
     And toc do doc "<tocdo>", dinh dang audio"<audio>", nhac nen "<nhacnen>"
@@ -11,5 +11,5 @@ Feature: Chuyển văn bản thành giọng nói với gói chuyên nghiệp
     Then Tai xuong audio voi vua chuyen van ban thanh cong
 
     Examples:
-      | tieude      | file | giongnuocngoai               | audio | tocdo | nhacnen |
-      | test          | chuyennghiep |     Antony voice     | mp3 | 1.5x       | bai1.mp3|
+      | tieude     |link  | giongnuocngoai             | audio | tocdo | nhacnen |
+      | test          |https://vietnamnet.vn/xu-phat-14-nguoi-phu-nu-tap-yoga-giua-duong-o-thai-binh-2282359.html |      Antony voice      | mp3 | 1.5x       | bai1.mp3 |

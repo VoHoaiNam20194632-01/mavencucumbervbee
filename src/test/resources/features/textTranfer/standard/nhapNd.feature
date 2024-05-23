@@ -12,4 +12,4 @@ Feature: Chuyển văn bản thành giọng nói với gói tiêu chuẩn
 
     Examples:
     | tieude       | giongtieuchuan                 | audio | tocdo | nhacnen |
-    | test           |     HN - Anh Khôi voice     | mp3 | 1.5x       | Wanting-And-Becoming-A-Director |
+    | test           |     HN - Anh Khôi voice     | mp3 | 1.5x       | bai1.mp3 |
