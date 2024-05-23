@@ -25,7 +25,7 @@ jobs:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       SUITE_FILE: ${{ github.event.inputs.suiteFile }}
     
-    steps:
+steps:
     - name: Slack Notification
       uses: act10ns/slack@v1
       with: 
