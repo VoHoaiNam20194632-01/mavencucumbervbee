@@ -1,89 +1,118 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Cloudhub - Build and Deploy
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+  #push:
+    #branches: [ master ]
+  #pull_request:
+    #branches: [ master ]
+  workflow_dispatch:
+    
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    #environment: Production
+    env:
+      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+      PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
+      PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+      #SANDBOX_CLIENT_ID: ${{ secrets.SANDBOX_CLIENT_ID }}
+      #SANDBOX_CLIENT_SECRET: ${{ secrets.SANDBOX_CLIENT_SECRET }} 
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v3
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: maven
-         
-    - name: Install dependencies
-      run: mvn dependency:go-offline compile compiler:testCompile
-    - name: Run specific test suites
-      run: mvn test -Dtest=testLogins.xml,testBuyTieuChuan.xml
-
-
-    - name: Run Test
+    - name: Slack Notification
+      uses: act10ns/slack@v1
+      with: 
+        status: starting
+        channel: '#meetups'
+        message: Starting Build and Deploy...
       if: always()
-      run: mvn package
-      continue-on-error: true
-
-    - name: Cache SonarCloud packages
-      uses: actions/cache@v1
-      with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
-    - name: Cache Maven packages
-      uses: actions/cache@v1
-      with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
-    - name: Build and analyze
-      if: always()
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -Psonarqube -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-      continue-on-error: true
-
-      #Allure
-    - name: Get Allure history
+      
+    - name: Checkout repository
       uses: actions/checkout@v2
-      if: always()
-      continue-on-error: true
+      
+    - name: Checking Cache
+      uses: actions/cache@v1
       with:
-          ref: gh-pages
-          path: gh-pages
-
-    - name: Allure Report action from marketplace
-      uses: simple-elf/allure-report-action@master
-      if: always()
-      id: allure-report
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-         
+        
+    - name: Build with Maven
+      run: mvn clean -B package -s .maven/settings.xml
+      
+    - name: Stamp artifact file name with commit hash
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
+    
+    - name: Upload artifact 
+      uses: actions/upload-artifact@master
       with:
-          allure_results: target/allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-
-    - name: Deploy report to Github Pages
+          name: artifacts
+          path: target/*.jar      
+      
+    - name: Slack Notification
+      uses: act10ns/slack@v1
+      with: 
+        status: ${{ job.status }}
+        channel: '#meetups'
+        message: Build {{ env.GITHUB_REF_NAME }} branch Successfully
       if: always()
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+      
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+      PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
+      PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+    - name: Slack Notification
+      uses: act10ns/slack@v1
+      with: 
+        status: starting
+        channel: '#meetups'
+        message: Starting Deployment...
+      if: always()
+      
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Checking Cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-      
+      
+    - uses: actions/download-artifact@master
+      with:
+        name: artifacts    
+      
+    - name: Deploy to Sandbox
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -s .maven/settings.xml \
+         -DskipTests   
+      
+    - name: Slack Notification
+      uses: act10ns/slack@v1
+      with: 
+        status: ${{ job.status }}
+        channel: '#meetups'
+        message: Deployed {{ env.GITHUB_REF_NAME }} branch Successfully
+      if: always()   
