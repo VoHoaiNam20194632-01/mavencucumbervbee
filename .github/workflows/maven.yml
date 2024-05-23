@@ -9,7 +9,8 @@ on:
         default: 'testLogins.xml'
 
 jobs:
-  build:
+
+build:
     runs-on: ubuntu-latest
     steps:
     - name: Setup JDK 21
@@ -72,17 +73,18 @@ steps:
         message: Build {{ env.GITHUB_REF_NAME }} branch Successfully
       if: always()
       
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    env:
+      
+      deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        env:
       NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
       PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
       PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
-    steps:
+      steps:
     - name: Slack Notification
       uses: act10ns/slack@v1
       with: 
