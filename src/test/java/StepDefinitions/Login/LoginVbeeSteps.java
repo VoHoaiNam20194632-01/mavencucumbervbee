@@ -50,28 +50,16 @@ public class LoginVbeeSteps {
         captureScreenshot("nhap email");
         WebElement email = driver.findElement(By.id("identifierId"));
         email.sendKeys("namvh@vbee.ai");
-        System.out.println(driver);
         email.sendKeys(Keys.ENTER);
         Thread.sleep(5000);
-        System.out.println("den day roi me a");
-        System.out.println(driver);
-//        String dom = (String) ((JavascriptExecutor) driver).executeScript("return document.documentElement.outerHTML;");
-//        System.out.println("DOM:");
-//        System.out.println(dom);
-//        WebElement pw = driver.findElement(By.id("password"));
-//                WebElement pw = driver.findElement(By.xpath("//*[@i=\"password\"]/div[1]/div/div[1]/input"));
         captureScreenshot("nhap password");
         WebElement pw = driver.findElement(By.name("Passwd"));
         pw.click();
         pw.click();
-//        *[@id="password"]/div[1]/div/div[1]/input
-        System.out.println("den day roi me a 1");
         Thread.sleep(5000);
         String pass = "24081201Nam@";
         pw.sendKeys(pass);
-        System.out.println("den day roi me a 2");
         pw.sendKeys(Keys.ENTER);
-        System.out.println("den day roi me a 3");
     }
 
     @When("^user enters (.*) and (.*)$")
@@ -83,9 +71,9 @@ public class LoginVbeeSteps {
 
     @And("confirm captcha")
     public void confirmCaptcha() throws Exception {
-//        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
-//        loginPage.confirmCaptcha();
-//        driver.switchTo().defaultContent();
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
+        loginPage.confirmCaptcha();
+        driver.switchTo().defaultContent();
 
     }
 
@@ -145,7 +133,14 @@ public class LoginVbeeSteps {
         loginPage.enterUsername(username);
 
     }
-
+    @When("the user enters an invalid {string} username")
+    public void theUserEntersAnInvalidUsername(String username) {
+        loginPage.enterUsername(username);
+    }
+    @And("enters a valid {string} password")
+    public void entersAValidPassword(String password) {
+        loginPage.enterPassword(password);
+    }
     @And("enters an invalid password {string}")
     public void entersAnInvalidPassword(String password) {
         loginPage.enterPassword(password);

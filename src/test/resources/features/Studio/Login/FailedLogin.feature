@@ -7,7 +7,7 @@ Feature: User Login
 #  người dùng nhập tên đăng nhập không hợp lệ
     And enters a valid "<password>" password
 #  nhập mật khẩu hợp lệ
-    And confirm captcha
+#    And confirm captcha
     And click on login button
     Then an error message should be displayed
 #  thông báo lỗi sẽ được hiển thị
@@ -24,7 +24,7 @@ Feature: User Login
 #  Khi người dùng nhập tên đăng nhập hợp lệ
     And enters an invalid password "<password>"
 #  Và nhập mật khẩu không hợp lệ
-    And confirm captcha
+#    And confirm captcha
     And click on login button
     Then an error message should be displayed
     And the user should not be logged in
@@ -38,7 +38,7 @@ Feature: User Login
     Given user is on login page
     When the user leaves the username "<username>" field and password "<password>"field empty
 #  người dùng để trống cả Tên đăng nhập và Mật khẩu
-    And confirm captcha
+#    And confirm captcha
     And click on login button
     Then an error message should be displayed
     And the user should not be logged in

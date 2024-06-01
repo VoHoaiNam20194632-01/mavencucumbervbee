@@ -4,7 +4,7 @@
 
     <test verbose="2" preserve-order="true" name="TestTieuChuanTTS">
         <classes>
-            <class name="Runner.Login.LoginRunner"/>
+            <class name="Runner.Login.LoginRunnerP"/>
             <class name="Runner.TTSTieuChuan.TTSNhapND"/>
             <class name="Runner.TTSTieuChuan.TTSFile"/>
             <class name="Runner.TTSTieuChuan.TTSLink"/>
