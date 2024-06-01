@@ -42,7 +42,7 @@ Examples:
 #  người dùng chọn gói cước tiêu chuẩn
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" giam tien and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -56,8 +56,8 @@ Examples:
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                | kyTuGoiThangTieuChuan | thang | tengoi |
-      | 5K | 300000                                | 30       | Tiêu chuẩn - Tháng |
+      |voucher              | giatrigoicuoc  | kyTuGoiThangTieuChuan | thang | tengoi |
+      | 5K                  |199000| 300000                                | 30       | Tiêu chuẩn - Tháng |
 
 #    TANG KY TU
   Scenario Outline: User purchases the standard package month và chọn voucher TANG KY TU
@@ -72,7 +72,7 @@ Examples:
 #  người dùng chọn gói cước tiêu chuẩn
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" tang ky tu and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai tang ky tu và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 #chuyen sang trang lich su thanh toan

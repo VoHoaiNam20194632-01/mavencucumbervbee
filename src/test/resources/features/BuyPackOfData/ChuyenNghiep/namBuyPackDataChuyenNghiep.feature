@@ -42,7 +42,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyên nghiệpk
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" giam tien and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -56,8 +56,8 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiNamChuyenNghiep    | nam     | tengoi                         |
-      | 5K  | 6000000                        | 365       | Chuyên nghiệp - Năm |
+      |voucher                |giatrigoicuoc  | kyTuGoiNamChuyenNghiep    | nam     | tengoi                         |
+      | 5K                    |3799000 | 6000000                        | 365       | Chuyên nghiệp - Năm |
 
 #    TANG KY TU
   Scenario Outline: User purchases CHUYEN NGHIEP package NAM và chọn voucher TANG KY TU
@@ -72,7 +72,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyên nghiep
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" tang ky tu and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -86,5 +86,5 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiNamChuyenNghiep   | nam | tengoi                         |
-      | X2  |12000000                         | 365        | Chuyên nghiệp - Năm |
+      |voucher                |giatrigoicuoc  | kyTuGoiNamChuyenNghiep   | nam | tengoi                         |
+      | X2                    |3799000  |12000000                         | 365        | Chuyên nghiệp - Năm |

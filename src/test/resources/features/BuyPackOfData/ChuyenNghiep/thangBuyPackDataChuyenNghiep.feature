@@ -27,7 +27,7 @@ Feature: Purchase Package
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher                | giatrigoicuoc| kyTuGoiThangChuyenNghiep       |thang       | tengoi|
-      |5%          | 1539000 | 500000                                | 30            | Chuyên nghiệp - Tháng|
+      |5%          | 399000 | 500000                                | 30            | Chuyên nghiệp - Tháng|
 
 #    GIAM TIEN
   Scenario Outline: User purchases the CHUYEN NGHIEP package month và chọn voucher GIAM TIEN
@@ -42,7 +42,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyen nghiep
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" giam tien and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai  giam tien và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -56,8 +56,8 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiThangChuyenNghiep    | thang | tengoi                         |
-      | 5K | 500000                               | 30       | Chuyên nghiệp - Tháng |
+      |voucher                  |giatrigoicuoc| kyTuGoiThangChuyenNghiep    | thang | tengoi                         |
+      | 5K                      |399000 | 500000                               | 30       | Chuyên nghiệp - Tháng |
 
 #    TANG KY TU
   Scenario Outline: User purchases the CHUYEN NGHIEP package month và chọn voucher TANG KY TU
@@ -72,7 +72,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyen nghiep
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" tang ky tu and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai tang ky tu và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -86,5 +86,5 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiThangChuyenNghiep   | thang | tengoi                         |
-      | X2 | 1000000                             | 30       | Chuyên nghiệp - Tháng |
+      |voucher                 |giatrigoicuoc | kyTuGoiThangChuyenNghiep   | thang | tengoi                         |
+      | X2                     |399000 | 1000000                             | 30       | Chuyên nghiệp - Tháng |

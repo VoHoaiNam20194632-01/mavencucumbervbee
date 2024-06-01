@@ -244,18 +244,18 @@ int soKyTuBanDau = 0;
 
     }
     double soTienGiam = 0;
-    public void chonVoucherGiamTienVaThanhToan(String voucher) throws InterruptedException {
-        By tienGoiCuocLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/p[2]");
-        WebElement tienGoiCuocBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(tienGoiCuocLocator));
-        String tienGoiCuocString = tienGoiCuocBtn.getText();
-        System.out.println(tienGoiCuocString);
-        String nam = tienGoiCuocString.replaceAll("[^\\d.]", "");
-// Loại bỏ ký tự 'đ' nếu cần thiết
-        if (nam.startsWith("đ")) {
-            nam = nam.substring(1);
-        }
-        String namDaBoDauCham = nam.replace(".", "");
-        double tienGoiCuoc = (Double.parseDouble(namDaBoDauCham));
+    public void chonVoucherGiamTienVaThanhToan(String giatrigoicuoc, String voucher) throws InterruptedException {
+//        By tienGoiCuocLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/p[2]");
+//        WebElement tienGoiCuocBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(tienGoiCuocLocator));
+//        String tienGoiCuocString = tienGoiCuocBtn.getText();
+//        System.out.println(tienGoiCuocString);
+//        String nam = tienGoiCuocString.replaceAll("[^\\d.]", "");
+//// Loại bỏ ký tự 'đ' nếu cần thiết
+//        if (nam.startsWith("đ")) {
+//            nam = nam.substring(1);
+//        }
+//        String namDaBoDauCham = nam.replace(".", "");
+        double tienGoiCuoc = (Double.parseDouble(giatrigoicuoc));
         System.out.println("tiengoicuoc" + tienGoiCuoc);
         WebElement AddVoucher = wait50.until(ExpectedConditions.visibilityOfElementLocated(addVoucherLocator));
         Thread.sleep(1000);
@@ -299,18 +299,18 @@ int soKyTuBanDau = 0;
         }
     }
     int tienGoiCuocTangKyTu = 0;
-   public void chonVoucherTangKyTuVaThanhToan(String voucher) throws InterruptedException, IOException {
-       By tienGoiCuocLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/p[2]");
-       WebElement tienGoiCuocBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(tienGoiCuocLocator));
-       String tienGoiCuocString = tienGoiCuocBtn.getText();
-       System.out.println(tienGoiCuocString);
-       String nam = tienGoiCuocString.replaceAll("[^\\d.]", "");
-// Loại bỏ ký tự 'đ' nếu cần thiết
-       if (nam.startsWith("đ")) {
-           nam = nam.substring(1);
-       }
-       String namDaBoDauCham = nam.replace(".", "");
-        tienGoiCuocTangKyTu = (Integer.parseInt(namDaBoDauCham));
+   public void chonVoucherTangKyTuVaThanhToan(String giatrigoicuoc, String voucher) throws InterruptedException, IOException {
+//       By tienGoiCuocLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/p[2]");
+//       WebElement tienGoiCuocBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(tienGoiCuocLocator));
+//       String tienGoiCuocString = tienGoiCuocBtn.getText();
+//       System.out.println(tienGoiCuocString);
+//       String nam = tienGoiCuocString.replaceAll("[^\\d.]", "");
+//// Loại bỏ ký tự 'đ' nếu cần thiết
+//       if (nam.startsWith("đ")) {
+//           nam = nam.substring(1);
+//       }
+//       String namDaBoDauCham = nam.replace(".", "");
+        tienGoiCuocTangKyTu = (Integer.parseInt(giatrigoicuoc));
        System.out.println("tiengoicuoc" + tienGoiCuocTangKyTu);
        WebElement AddVoucher = wait50.until(ExpectedConditions.visibilityOfElementLocated(addVoucherLocator));
        Thread.sleep(1000);

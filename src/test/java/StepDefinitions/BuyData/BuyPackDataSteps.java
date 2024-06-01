@@ -92,18 +92,18 @@ public class BuyPackDataSteps {
         captureScreenshot("chon ngan hang");
     }
     @And("{string} select voucher {string} phan tram and pay")
-    public void selectVoucherPhanTramAndPay(String giatrigoicuco, String voucher) throws InterruptedException, IOException {
-        BuyPackData.chonVoucherPhanTramVaThanhToan( giatrigoicuco , voucher);
+    public void selectVoucherPhanTramAndPay(String giatrigoicuoc, String voucher) throws InterruptedException, IOException {
+        BuyPackData.chonVoucherPhanTramVaThanhToan( giatrigoicuoc , voucher);
         captureScreenshot("chon voucher %");
     }
-    @And("select voucher {string} giam tien and pay")
-    public void selectVoucherGiamTienAndPay(String voucher) throws InterruptedException, IOException {
-        BuyPackData.chonVoucherGiamTienVaThanhToan(voucher);
+    @And("{string} select voucher {string} giam tien and pay")
+    public void selectVoucherGiamTienAndPay(String giatrigoicuoc,String voucher) throws InterruptedException, IOException {
+        BuyPackData.chonVoucherGiamTienVaThanhToan(giatrigoicuoc,voucher);
         captureScreenshot("chon voucher giam tien");
     }
-    @And("select voucher {string} tang ky tu and pay")
-    public void selectVoucherTangKyTuAndPay(String voucher) throws InterruptedException, IOException {
-        BuyPackData.chonVoucherTangKyTuVaThanhToan(voucher);
+    @And("{string} select voucher {string} tang ky tu and pay")
+    public void selectVoucherTangKyTuAndPay(String giatrigoicuoc,String voucher) throws InterruptedException, IOException {
+        BuyPackData.chonVoucherTangKyTuVaThanhToan(giatrigoicuoc ,voucher);
         captureScreenshot("chon voucher tang ky tu");
     }
 //#chuyen sang trang thanh toan

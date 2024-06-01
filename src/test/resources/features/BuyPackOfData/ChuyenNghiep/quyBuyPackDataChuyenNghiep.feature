@@ -42,7 +42,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước chuyên nghiệp
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" giam tien and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -56,8 +56,8 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiQuyChuyenNghiep   | quy     | tengoi                         |
-      | 5K  | 1500000                        | 90       | Chuyên nghiệp - Quý |
+      |voucher              |giatrigoicuoc    | kyTuGoiQuyChuyenNghiep   | quy     | tengoi                         |
+      | 5K                  |1039000 | 1500000                        | 90       | Chuyên nghiệp - Quý |
 
 #    TANG KY TU
   Scenario Outline: User purchases CHUYEN NGHIEP package QUY và chọn voucher TANG KY TU
@@ -72,7 +72,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước  chuyên nghiệp
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" tang ky tu and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -86,5 +86,5 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiQuyChuyenNghiep  | quy | tengoi                         |
-      | X2  | 3000000                         | 90       | Chuyên nghiệp - Quý |
+      |voucher               |giatrigoicuoc   | kyTuGoiQuyChuyenNghiep  | quy | tengoi                         |
+      | X2                   |1039000| 3000000                         | 90       | Chuyên nghiệp - Quý |

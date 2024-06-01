@@ -42,7 +42,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước đặc biệt
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" giam tien and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -56,8 +56,8 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiNamDacBiet    | nam     | tengoi                         |
-      | 5K  | 12000000                        | 365       | Đặc biệt - Năm |
+      |voucher             | giatrigoicuoc     | kyTuGoiNamDacBiet    | nam     | tengoi                         |
+      | 5K                 |7690000 | 12000000                        | 365       | Đặc biệt - Năm |
 
 #    TANG KY TU
   Scenario Outline: User purchases the standard package month và chọn voucher TANG KY TU
@@ -72,7 +72,7 @@ Feature: Purchase Package
 #  người dùng chọn gói cước đặc biệt
     And ramdom bank
     #ramdom ngan hang
-    And select voucher "<voucher>" tang ky tu and pay
+    And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai theo % và thanh toán(check giá gói cước ....)
     And Switch to the payment history page
 ##chuyen sang trang lich su thanh toan
@@ -86,5 +86,5 @@ Feature: Purchase Package
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                  | kyTuGoiNamDacBiet    | nam | tengoi                         |
-      | X2  |24000000                         | 365        | Đặc biệt - Năm |
+      |voucher                |giatrigoicuoc  | kyTuGoiNamDacBiet    | nam | tengoi                         |
+      | X2                    |7690000|24000000                         | 365        | Đặc biệt - Năm |
