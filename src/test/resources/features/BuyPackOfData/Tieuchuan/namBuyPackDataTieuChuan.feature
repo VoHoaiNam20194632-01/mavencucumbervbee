@@ -59,7 +59,7 @@ Feature: Purchase Packagez
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       | voucher |giatrigoicuoc| kyTuGoinamTieuChuan | nam | tengoi                     |
-      | 5K      | 1539000 | 3600000                          | 365  | Tiêu chuẩn - Năm |
+      | 5k      | 1539000 | 3600000                          | 365  | Tiêu chuẩn - Năm |
 
     #  TANG KY TU
   Scenario Outline: User purchases the standard package NAM và chọn voucher TANG KY TU

@@ -84,18 +84,4 @@ public class BuyPackDataDubbing {
         loginPage.clickNoButton();
 
     }
-
-//    @And("xem thoi luong")
-//    public void xemThoiLuong() {
-//        dubbing.layketquathoiluongconlai();
-//    }
-//
-//    @And("lay thoi luong srt")
-//    public void layThoiLuongSrt() {
-//        dubbing = new BuyPackDataSteps(driver);
-//        dubbing.laythoiluongsrt();
-//    }
-
-
-
 }

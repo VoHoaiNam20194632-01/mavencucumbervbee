@@ -57,7 +57,7 @@ Examples:
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
       |voucher              | giatrigoicuoc  | kyTuGoiThangTieuChuan | thang | tengoi |
-      | 5K                  |199000| 300000                                | 30       | Tiêu chuẩn - Tháng |
+      | 5k                  |199000| 300000                                | 30       | Tiêu chuẩn - Tháng |
 
 #    TANG KY TU
   Scenario Outline: User purchases the standard package month và chọn voucher TANG KY TU
@@ -86,5 +86,5 @@ Examples:
 #    And check ten goi cuoc
     And check ten goi cuoc sau khi mua "<tengoi>"
     Examples:
-      |voucher                | kyTuGoiThangTieuChuan | thang | tengoi |
-      | X2 | 600000                                | 30       | Tiêu chuẩn - Tháng |
+      |voucher             | giatrigoicuoc   | kyTuGoiThangTieuChuan | thang | tengoi |
+      | X2                 | 199000  | 600000                                | 30       | Tiêu chuẩn - Tháng |

@@ -98,7 +98,7 @@ public class textTransfer {
     }
 
     public void nhapVanBanDungYeuCau(){
-        String test3000 = "Chiều 11.4, sau hơn 1 tháng xét xử sơ thẩm và nghị án, TAND TP.HCM tuyên án đối với bị cáo Trương Mỹ Lan (68 tuổi, Chủ tịch HĐQT Tập đoàn Vạn Thịnh Phát) và 85 bị cáo.\n" +
+        String NoiDung = "Chiều 11.4, sau hơn 1 tháng xét xử sơ thẩm và nghị án, TAND TP.HCM tuyên án đối với bị cáo Trương Mỹ Lan (68 tuổi, Chủ tịch HĐQT Tập đoàn Vạn Thịnh Phát) và 85 bị cáo.\n" +
                 "Đề nghị làm rõ dòng tiền 108.878 tỉ đồng và hơn 14,7 triệu USD\n" +
                 "Theo đó, HĐXX tuyên phạt bị cáo Trương Mỹ Lan án tử hình về tội \"tham ô tài sản\", 20 năm tù về tội \"đưa hối lộ\" và 20 năm tù về tội \"vi phạm quy định về cho vay trong hoạt động của các tổ chức tín dụng\". Tổng hợp hình phạt là tử hình đối với bị cáo Lan.";
         System.out.println(soKyTuBanDau
@@ -107,7 +107,7 @@ public class textTransfer {
         System.out.println(soKyTuBanDau);
         WebElement nhapVanBan = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"enter-text-here\"]/div[1]/div/div[2]/div")));
         nhapVanBan.click();
-        nhapVanBan.sendKeys(test3000);
+        nhapVanBan.sendKeys(NoiDung);
     }
 
     public void addLinkVanBan(String link) throws InterruptedException {
