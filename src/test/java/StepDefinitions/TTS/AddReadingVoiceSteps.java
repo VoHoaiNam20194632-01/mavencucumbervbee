@@ -10,6 +10,7 @@ import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeMethod;
 
 import java.awt.*;
 import java.io.ByteArrayInputStream;
@@ -25,11 +26,13 @@ public class AddReadingVoiceSteps {
     }
 
     private textTransfer TextTransfer;
+@BeforeMethod
     public void setUp(){
         TextTransfer = new textTransfer(driver);
     }
-    @And("Nhap tieu de {string}")
-    public void nhapTieuDe(String tieude) {
+
+    @And("Enter a title {string}")
+    public void enterATitle(String title) {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh'h' : mm");
 
         // Định dạng cho phần tử LocalDateTime
@@ -43,61 +46,60 @@ public class AddReadingVoiceSteps {
         String dateTimeFormatted = now.format(dateTimeFormatter);
 
         // Kết hợp các phần tử đã định dạng lại thành chuỗi "1 12h ngày 20/5/2024"
-        String NhapNoiDungTieuDe = tieude +timeFormatted  + " ngày " + dateTimeFormatted;
+        String NhapNoiDungTieuDe = title +timeFormatted  + " ngày " + dateTimeFormatted;
         setUp();
         TextTransfer.ChonTieuDe(NhapNoiDungTieuDe);
     }
-    @And("Nhap van ban can chuyen doi dung thiet ke")
-    public void nhapVanBanCanChuyenDoiDungThietKe() {
+    @And("Enter the text to convert")
+    public void enterTheTextToConvert() {
         TextTransfer.nhapVanBanDungYeuCau();
     }
-    @And("Nhap link {string} can chuyen doi")
-    public void nhapLinkCanChuyenDoi(String link) throws InterruptedException {
+    @And("Choose your reading voice")
+    public void chooseYourReadingVoice() throws IOException {
+        textTransfer.ReadingButton();
+    }
+    @And("Enter the link {string} to convert")
+    public void enterTheLinkToConvert(String link) throws InterruptedException {
         TextTransfer.addLinkVanBan(link);
     }
 
-    @And("Nhap file {string}can chuyen doi")
-    public void nhapFileCanChuyenDoi(String file) throws InterruptedException, AWTException, IOException {
+    @And("Enter the file {string} to convert")
+    public void enterTheFileToConvert(String file) throws IOException, InterruptedException, AWTException {
         TextTransfer.addFile(file);
     }
-    @And("Click button chuyen van ban")
-    public void clickButtonChuyenVanBan() {
-            textTransfer.clickBtnChuyenVanBan();
+    @And("Click button text transfer")
+    public void clickButtonTextTransfer() {textTransfer.clickBtnChuyenVanBan();
     }
-    @And("Check ky tu tai khoan sau khi chuyen doi van ban")
-    public void checkKyTuTaiKhoanSauKhiChuyenDoiVanBan() {
+    @And("Check the number of remaining characters")
+    public void checkTheNumberOfRemainingCharacters() {
         textTransfer.checkKyTuSauTTS();
     }
 
-    @Then("Tai xuong audio voi vua chuyen van ban thanh cong")
-    public void taiXuongAudioVoiVuaChuyenVanBanThanhCong() {
+    @Then("Download audio to your computer")
+    public void downloadAudioToYourComputer() {
         textTransfer.clickBtnTaiXuong();
     }
 
-    @And("Chọn giong doc tieu chuan {string}")
-    public void chọnGiongDocTieuChuan(String user) throws IOException {
+    @And("Choose a standard reading voice {string}")
+    public void chooseAStandardReadingVoice(String user) throws IOException {
         textTransfer.selectVoiceType("STANDARD");
         textTransfer.selectVoiceUser(user);
     }
-    @And("Chọn giong doc nuoc ngoai {string}")
-    public void chọnGiongDocNuocNgoai(String user) throws IOException, InterruptedException {
+    @And("Choose a foreign accent {string}")
+    public void chooseAForeignAccent(String user ) throws InterruptedException, IOException {
         textTransfer.selectTypeVoiceNuocNgoai("en-AU");
         textTransfer.selectVoiceUser(user);
     }
-    @And("toc do doc {string}, dinh dang audio{string}, nhac nen {string}")
-    public void tocDoDocDinhDangAudioNhacNen(String tocdo, String dingdang, String nhacnen) throws IOException, InterruptedException {
+    @And("reading speed {string}, Format audio{string}, soundtrack {string}")
+    public void readingSpeedFormatAudioSoundtrack(String tocdo, String dinhdang, String nhacnen) throws IOException, InterruptedException {
         System.out.println("bat  dau nhap toc do");
         textTransfer.nhapTocDoVanBan(tocdo);
         System.out.println("bat  dau nhap dinh dang");
-        textTransfer.DingDang(dingdang);
+        textTransfer.DingDang(dinhdang);
         System.out.println("bat  dau nhap nhac nen");
         textTransfer.NhacNen(nhacnen);
     }
 
-    @And("chon giong doc")
-    public void chonGiongDoc() throws IOException {
-        textTransfer.ReadingButton();
-    }
     @After
     public void TearDown(Scenario scenario) {
         if (
@@ -108,5 +110,7 @@ public class AddReadingVoiceSteps {
         }
 
     }
+
+
 
 }

@@ -1,7 +1,7 @@
 
-Feature: Purchase Package
+Feature: Buy Package
 #  PHAN TRAM
-  Scenario Outline: User purchases the standard package  month và chọn voucher %
+  Scenario Outline: User buy the standard package month và chọn voucher %
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước

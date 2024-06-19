@@ -9,12 +9,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.qameta.allure.Allure;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.time.Duration;
 
 public class LoginVbeeSteps {
 
@@ -24,8 +25,6 @@ public class LoginVbeeSteps {
         driver = WebDriverManager.getDriver();
     }
 
-    Duration timeout50 = Duration.ofSeconds(50);
-    WebDriverWait wait50 = new WebDriverWait(driver, timeout50);
     private LoginPage loginPage;
 
     @Given("user is on login page")
@@ -39,50 +38,26 @@ public class LoginVbeeSteps {
         // In ra kích thước
         System.out.println("Chiều rộng của cửa sổ: " + size.getWidth());
         System.out.println("Chiều cao của cửa sổ: " + size.getHeight());
-        captureScreenshot("den trang login");
+        captureScreenshot("trang login");
         // Nếu có lỗi, ghi log
     }
-
-    @And("dang nhap bang gg")
-    public void dangNhapBangGg() throws InterruptedException, IOException {;
-        WebElement gg = driver.findElement(By.id("social-google"));
-        gg.click();
-        captureScreenshot("nhap email");
-        WebElement email = driver.findElement(By.id("identifierId"));
-        email.sendKeys("namvh@vbee.ai");
-        email.sendKeys(Keys.ENTER);
-        Thread.sleep(5000);
-        captureScreenshot("nhap password");
-        WebElement pw = driver.findElement(By.name("Passwd"));
-        pw.click();
-        pw.click();
-        Thread.sleep(5000);
-        String pass = "24081201Nam@";
-        pw.sendKeys(pass);
-        pw.sendKeys(Keys.ENTER);
+    @When("click Login GG button")
+    public void clickLoginGGButton() {
+        loginPage.clickLoginBtn();
     }
-
-    @When("^user enters (.*) and (.*)$")
-    public void userEntersUsernameAndPassword(String username, String password) throws InterruptedException {
+    @And("user enters {string} username")
+    public void userEntersUsername(String username) throws IOException, InterruptedException {
         System.out.println("Inside Step - user enters username and password");
+        captureScreenshot("nhap email");
         loginPage.enterUsername(username);
+    }
+    @And("user enter {string}  password")
+    public void userEnterPassword(String password) throws IOException, InterruptedException {
+        captureScreenshot("nhap password");
         loginPage.enterPassword(password);
     }
 
-    @And("confirm captcha")
-    public void confirmCaptcha() throws Exception {
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
-        loginPage.confirmCaptcha();
-        driver.switchTo().defaultContent();
-
-    }
-
-    @And("click on login button")
-    public void clickOnLoginButton() throws InterruptedException, IOException {
-        loginPage.clickLogin();
-    }
-
-    @And("click No")
+    @And("click skip banner")
     public void clickNo() throws InterruptedException {
         System.out.println("bat dau tim x");
         loginPage.clickNoButton();
@@ -102,56 +77,10 @@ public class LoginVbeeSteps {
         }
         captureScreenshot("trang AIVOICE");
     }
-
-//    public void captureScreen(String name) throws IOException {
-//        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//        FileUtils.copyFile(screenshot, new File("image\\Login\\" + name));
-//    }
-
-//    @When("the user enters an invalid {string} username")
-//    public void theUserEntersAnInvalidUsername(String username) {
-//        loginPage.enterUsername(username);
-//    }
-//
-//    @And("enters a valid {string} password")
-//    public void entersAValidPassword(String password) {
-//        loginPage.enterPassword(password);
-//    }
-
-    @Then("an error message should be displayed")
-    public void anErrorMessageShouldBeDisplayed() {
+    @And("Error message")
+    public void errorMessage() {
         loginPage.ErrorMessage();
     }
-
-    @And("the user should not be logged in")
-    public void theUserShouldNotBeLoggedIn() {
-        loginPage.NotBeLoggedIn();
-    }
-
-    @When("the user enters a valid username {string}")
-    public void theUserEntersAValidUsername(String username) {
-        loginPage.enterUsername(username);
-
-    }
-    @When("the user enters an invalid {string} username")
-    public void theUserEntersAnInvalidUsername(String username) {
-        loginPage.enterUsername(username);
-    }
-    @And("enters a valid {string} password")
-    public void entersAValidPassword(String password) {
-        loginPage.enterPassword(password);
-    }
-    @And("enters an invalid password {string}")
-    public void entersAnInvalidPassword(String password) {
-        loginPage.enterPassword(password);
-    }
-
-    @When("the user leaves the username {string} field and password {string}field empty")
-    public void theUserLeavesTheUsernameFieldAndPasswordFieldEmpty(String username, String password) {
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
-    }
-
     @After
     public void TearDown(Scenario scenario) {
         if (
@@ -166,4 +95,6 @@ public class LoginVbeeSteps {
         byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment(stepName, new ByteArrayInputStream(screenshot));
     }
+
+
 }

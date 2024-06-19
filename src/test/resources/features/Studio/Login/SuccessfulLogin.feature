@@ -1,19 +1,18 @@
 
-@SmokeFeature
 Feature: feature  to test login functionality
 
   @login
   Scenario Outline: Login test pass
     Given user is on login page
     # truy cập trang đăng nhập
-    And user enters <username> and <password>
-    # nhập tên đăng nhập và mật khẩu
-    And confirm captcha
-#    #xác nhận captcha
-    And click on login button
-#    # click nút đăng nhập
-    And click No
-#    # bỏ qua hướng dẫn
+    When click Login GG button
+    # click nút đăng nhập bằng gg
+    And user enters "<username>" username
+    # nhập tên đăng nhập
+    And user enter "<password>"  password
+    # nhập mật khẩu
+    And click skip banner
+#    # bỏ qua các banner quảng cáo
     Then user is navigated to the home page
 #     người dùng truy cập vào AIVoice
     Examples:

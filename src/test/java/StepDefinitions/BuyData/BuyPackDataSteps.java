@@ -38,7 +38,7 @@ public class BuyPackDataSteps {
         captureScreenshot("trang mua goi cuoc");
     }
     @And("Get the initial number of characters the account has")
-    public void getTheInitialNumberOfCharactersTheAccountHas() {
+    public void getTheInitialNumberOfCharactersTheAccountHas() throws InterruptedException {
         BuyPackData = new BuyPackData(driver);
         BuyPackData.LaySoKyTuTaiKhoanDaCo();
     }
@@ -91,10 +91,18 @@ public class BuyPackDataSteps {
         Thread.sleep(500);
         captureScreenshot("chon ngan hang");
     }
+    @And("selects bank momo")
+    public void selectsBankMomo() {
+        BuyPackData.selectsBankMomo();
+    }
     @And("{string} select voucher {string} phan tram and pay")
     public void selectVoucherPhanTramAndPay(String giatrigoicuoc, String voucher) throws InterruptedException, IOException {
         BuyPackData.chonVoucherPhanTramVaThanhToan( giatrigoicuoc , voucher);
         captureScreenshot("chon voucher %");
+    }
+    @And("{string} select voucher {string} giam tien")
+    public void selectVoucherGiamTien(String giatrigoicuoc, String voucher) throws InterruptedException {
+        BuyPackData.ChonVoucherGiamTien(giatrigoicuoc,voucher);
     }
     @And("{string} select voucher {string} giam tien and pay")
     public void selectVoucherGiamTienAndPay(String giatrigoicuoc,String voucher) throws InterruptedException, IOException {
@@ -118,7 +126,7 @@ public class BuyPackDataSteps {
         captureScreenshot("mua xong goi quay ve trang chu");
     }
     @And("Check the added character after purchasing the package{string}")
-    public void kiemTraKyTuCongVaoSauKhiMuaGoi(String kyTu) {
+    public void kiemTraKyTuCongVaoSauKhiMuaGoi(String kyTu) throws InterruptedException {
         BuyPackData.kiemtraKyTuCongThemSauKhiMuaGoiThangTieuChuan(kyTu);
     }
     @And("check han su dung {int}")
