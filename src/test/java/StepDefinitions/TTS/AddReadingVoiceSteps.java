@@ -32,7 +32,7 @@ public class AddReadingVoiceSteps {
     }
 
     @And("Enter a title {string}")
-    public void enterATitle(String title) {
+    public void enterATitle(String title) throws IOException {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh'h' : mm");
 
         // Định dạng cho phần tử LocalDateTime
@@ -49,26 +49,32 @@ public class AddReadingVoiceSteps {
         String NhapNoiDungTieuDe = title +timeFormatted  + " ngày " + dateTimeFormatted;
         setUp();
         TextTransfer.ChonTieuDe(NhapNoiDungTieuDe);
+        captureScreenshot("nhaptieude");
     }
     @And("Enter the text to convert")
-    public void enterTheTextToConvert() {
+    public void enterTheTextToConvert() throws IOException {
         TextTransfer.nhapVanBanDungYeuCau();
+        captureScreenshot("nhapnoidung");
     }
     @And("Choose your reading voice")
     public void chooseYourReadingVoice() throws IOException {
         textTransfer.ReadingButton();
+        captureScreenshot("batDauChonGiongDoc");
     }
     @And("Enter the link {string} to convert")
-    public void enterTheLinkToConvert(String link) throws InterruptedException {
+    public void enterTheLinkToConvert(String link) throws InterruptedException, IOException {
         TextTransfer.addLinkVanBan(link);
+        captureScreenshot("addLinkVanBan");
     }
 
     @And("Enter the file {string} to convert")
     public void enterTheFileToConvert(String file) throws IOException, InterruptedException, AWTException {
         TextTransfer.addFile(file);
+        captureScreenshot("addFileConvert");
     }
     @And("Click button text transfer")
-    public void clickButtonTextTransfer() {textTransfer.clickBtnChuyenVanBan();
+    public void clickButtonTextTransfer() throws IOException {textTransfer.clickBtnChuyenVanBan();
+    captureScreenshot("clickBtnChuyenVanBan");
     }
     @And("Check the number of remaining characters")
     public void checkTheNumberOfRemainingCharacters() {
@@ -83,11 +89,13 @@ public class AddReadingVoiceSteps {
     @And("Choose a standard reading voice {string}")
     public void chooseAStandardReadingVoice(String user) throws IOException {
         textTransfer.selectVoiceType("STANDARD");
+        captureScreenshot("chonGiongDocTieuChuan");
         textTransfer.selectVoiceUser(user);
     }
     @And("Choose a foreign accent {string}")
     public void chooseAForeignAccent(String user ) throws InterruptedException, IOException {
         textTransfer.selectTypeVoiceNuocNgoai("en-AU");
+        captureScreenshot("ChonGiongDocCaoCap");
         textTransfer.selectVoiceUser(user);
     }
     @And("reading speed {string}, Format audio{string}, soundtrack {string}")
@@ -98,10 +106,16 @@ public class AddReadingVoiceSteps {
         textTransfer.DingDang(dinhdang);
         System.out.println("bat  dau nhap nhac nen");
         textTransfer.NhacNen(nhacnen);
+        captureScreenshot("NhapTocDo,dingdang,nhacnen");
     }
     @And("Show the upgrade banner now")
-    public void showTheUpgradeBannerNow() {
+    public void showTheUpgradeBannerNow() throws IOException {
     textTransfer.BannerUpgrade();
+    captureScreenshot("hienThiBanner");
+    }
+    public void captureScreenshot(String stepName) throws IOException {
+        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment(stepName, new ByteArrayInputStream(screenshot));
     }
     @After
     public void TearDown(Scenario scenario) {
