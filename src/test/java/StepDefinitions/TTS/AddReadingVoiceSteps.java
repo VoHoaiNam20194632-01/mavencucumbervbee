@@ -99,7 +99,10 @@ public class AddReadingVoiceSteps {
         System.out.println("bat  dau nhap nhac nen");
         textTransfer.NhacNen(nhacnen);
     }
-
+    @And("Show the upgrade banner now")
+    public void showTheUpgradeBannerNow() {
+    textTransfer.BannerUpgrade();
+    }
     @After
     public void TearDown(Scenario scenario) {
         if (
@@ -110,7 +113,5 @@ public class AddReadingVoiceSteps {
         }
 
     }
-
-
 
 }

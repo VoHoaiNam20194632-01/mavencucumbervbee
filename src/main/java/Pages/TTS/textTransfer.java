@@ -164,6 +164,14 @@ public class textTransfer {
         BtnApDung.click();
         Thread.sleep(7000);
     }
+    public static void BannerUpgrade(){
+        WebElement bannerNangCap = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Nâng cấp ngy']")));
+        if (bannerNangCap.isDisplayed()) {
+            System.out.println("Banner 'Nâng cấp ngay' đã xuất hiện.");
+        } else {
+            throw new AssertionError("Banner không hiển thị ");
+        }
+    }
     public  static void clickBtnChuyenVanBan(){
         WebElement BtnChuyenVanBan = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.id("convert-tts")));
         BtnChuyenVanBan.click();
