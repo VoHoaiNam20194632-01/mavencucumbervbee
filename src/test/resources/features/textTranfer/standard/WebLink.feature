@@ -1,5 +1,5 @@
-Feature: Chuyển văn bản thành giọng nói với gói tiêu chuẩn
-  Scenario Outline: Chuyển văn bản thành giọng nói thành công
+Feature: Text-to-speech with the standard package
+  Scenario Outline: Text-to-speech conversion successful
     Given user is navigated to the home page
     And Enter a title "<title>"
     #nhap tieu de
