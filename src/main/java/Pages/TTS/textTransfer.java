@@ -165,7 +165,7 @@ public class textTransfer {
         Thread.sleep(7000);
     }
     public static void BannerUpgrade(){
-        WebElement bannerNangCap = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Nâng cấp ngy']")));
+        WebElement bannerNangCap = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Nâng cấp ngay']")));
         if (bannerNangCap.isDisplayed()) {
             System.out.println("Banner 'Nâng cấp ngay' đã xuất hiện.");
         } else {

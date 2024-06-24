@@ -95,8 +95,8 @@ public class AddReadingVoiceSteps {
     @And("Choose a foreign accent {string}")
     public void chooseAForeignAccent(String user ) throws InterruptedException, IOException {
         textTransfer.selectTypeVoiceNuocNgoai("en-AU");
-        captureScreenshot("ChonGiongDocCaoCap");
         textTransfer.selectVoiceUser(user);
+        captureScreenshot("ChonGiongDocCaoCap");
     }
     @And("reading speed {string}, Format audio{string}, soundtrack {string}")
     public void readingSpeedFormatAudioSoundtrack(String tocdo, String dinhdang, String nhacnen) throws IOException, InterruptedException {
@@ -109,7 +109,8 @@ public class AddReadingVoiceSteps {
         captureScreenshot("NhapTocDo,dingdang,nhacnen");
     }
     @And("Show the upgrade banner now")
-    public void showTheUpgradeBannerNow() throws IOException {
+    public void showTheUpgradeBannerNow() throws IOException, InterruptedException {
+    Thread.sleep(2000);
     textTransfer.BannerUpgrade();
     captureScreenshot("hienThiBanner");
     }
