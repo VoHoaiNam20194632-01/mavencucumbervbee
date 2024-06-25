@@ -1,5 +1,5 @@
 Feature: Text-to-speech with the standard package
-  Scenario Outline: Text-to-speech conversion successful
+  Scenario Outline: Text-to-speech conversion fails with premium voice selected
     Given user is navigated to the home page
     And Enter a title "<title>"
     #nhap tieu de
@@ -9,7 +9,7 @@ Feature: Text-to-speech with the standard package
     #chon giọng đọc
     And Choose a foreign accent "<giongnuocngoai>"
     #chon giong doc nước ngoài
-    And Show the upgrade banner now
+    Then Show the upgrade banner now
 
     Examples:
       | title       | giongnuocngoai|

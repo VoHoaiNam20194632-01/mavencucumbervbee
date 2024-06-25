@@ -8,7 +8,7 @@
     # click login bằng GG
     And user enters "<usernameerror>" username
     # nhập tên đăng nhập và mật khẩu
-    And Error message
+    Then Error message
     # hiện thị thông báo lỗi
     Examples:
       | usernameerror |
@@ -22,7 +22,7 @@
      # nhập email
       And user enter "<passworderror>"  password
      # nhập  mật khẩu
-      And Error message
+      Then Error message
       # hiện thị thông báo lỗi
       Examples:
         | username | passworderror |
