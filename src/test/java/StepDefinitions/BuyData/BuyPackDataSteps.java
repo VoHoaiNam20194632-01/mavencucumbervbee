@@ -92,8 +92,9 @@ public class BuyPackDataSteps {
         captureScreenshot("chon ngan hang");
     }
     @And("Check cancel order")
-    public void checkCancelOrder() {
+    public void checkCancelOrder() throws IOException {
         BuyPackData.huyDon();
+        captureScreenshot("checkCancelOrder");
     }
     @And("selects bank momo")
     public void selectsBankMomo() {
@@ -142,8 +143,9 @@ public class BuyPackDataSteps {
         BuyPackData.checkTenGoiCuocSauKhiMua(tenGoiKhiMua);
     }
     @Then("Shows an invalid code error message")
-    public void showsAnInvalidCodeErrorMessage() {
+    public void showsAnInvalidCodeErrorMessage() throws IOException {
         BuyPackData.showsInvalidCodeErrorMessage();
+        captureScreenshot("Thông báo lỗi mã voucher không hợp lệ");
     }
     // chuyen sang trang duyet don
     @Then("the system displays a successful purchase confirmation")
