@@ -91,6 +91,10 @@ public class BuyPackDataSteps {
         Thread.sleep(500);
         captureScreenshot("chon ngan hang");
     }
+    @And("Check cancel order")
+    public void checkCancelOrder() {
+        BuyPackData.huyDon();
+    }
     @And("selects bank momo")
     public void selectsBankMomo() {
         BuyPackData.selectsBankMomo();
@@ -137,6 +141,10 @@ public class BuyPackDataSteps {
     public void checkTenGoiCuocSauKhiMua(String tenGoiKhiMua) throws InterruptedException {
         BuyPackData.checkTenGoiCuocSauKhiMua(tenGoiKhiMua);
     }
+    @Then("Shows an invalid code error message")
+    public void showsAnInvalidCodeErrorMessage() {
+        BuyPackData.showsInvalidCodeErrorMessage();
+    }
     // chuyen sang trang duyet don
     @Then("the system displays a successful purchase confirmation")
     public void theSystemDisplaysASuccessfulPurchaseConfirmation() throws InterruptedException, IOException {
@@ -153,4 +161,5 @@ public class BuyPackDataSteps {
         }
 
     }
+
 }

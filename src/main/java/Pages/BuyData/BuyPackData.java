@@ -105,6 +105,23 @@ int soKyTuBanDau = 0;
     WebElement randomNganhang = nganhang[randomIndex];
     randomNganhang.click();
     }
+    public void huyDon(){
+        try {
+            // Chờ banner cảnh báo xuất hiện
+            WebElement alertBanner = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".MuiBox-root .content-wrapper .MuiTypography-body1.content")));
+
+            // Kiểm tra nội dung banner
+            if (alertBanner.getText().contains("Quý khách có 01 đơn hàng đang chờ duyệt")) {
+                // Tìm và click nút "Hủy đơn hàng"
+                WebElement cancelOrderButton = wait50.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".MuiButton-root.cancel-button")));
+                cancelOrderButton.click();
+                System.out.println("Đơn hàng đã được hủy.");
+            }
+        } catch (Exception e) {
+            System.out.println("Không có banner cảnh báo.");
+        }
+
+    }
     public void selectsBankMomo(){
         WebElement Momo = wait50.until(ExpectedConditions.visibilityOfElementLocated(MomoLocator));
         Momo.click();
@@ -192,40 +209,6 @@ int soKyTuBanDau = 0;
         By ApDung = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[3]/div[2]/div/button");
         WebElement ApdungBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(ApDung));
         ApdungBtn.click();
-        // check voucher
-        System.out.println(voucher);
-        String voucher5K = "5K";
-        if(voucher.equalsIgnoreCase(voucher5K)){
-            soTienGiam= 5000;
-            sotienthanhtoan = (int) (tienGoiCuoc - soTienGiam);
-        }
-        System.out.println("den so tien thanh toan dung phai la : " + sotienthanhtoan);
-        By sotienthanhtoanWebLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div[4]/p[2]");
-        WebElement sotienthanhtoanWebElement = wait50.until(ExpectedConditions.visibilityOfElementLocated(sotienthanhtoanWebLocator));
-        String sotienthanhtoanWebText = sotienthanhtoanWebElement.getText();
-        System.out.println(sotienthanhtoanWebText);
-        String numericString = sotienthanhtoanWebText.replaceAll("[^\\d.]", "");
-// Loại bỏ ký tự 'đ' nếu cần thiết
-        if (numericString.startsWith("đ")) {
-            numericString = numericString.substring(1);
-        }
-// Chuyển đổi chuỗi thành số
-        String numericStringBocham = numericString.replace(".","");
-        System.out.println("so tien ap dung voucher da bo dau cham" +numericStringBocham);
-        double sotienthanhtoanWeb = (Integer.parseInt(numericStringBocham));
-        System.out.println(sotienthanhtoanWeb);
-        if(sotienthanhtoan != sotienthanhtoanWeb) throw new AssertionError("tinh sai gia goi cuoc sau khi khuyen mai");
-        if(sotienthanhtoan == sotienthanhtoanWeb){
-            By DongyThanhToan = By.xpath("//button[contains(text(),'Đồng ý thanh toán')]");
-            WebElement DongyThanhToanBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(DongyThanhToan));
-            DongyThanhToanBtn.click();
-            Thread.sleep(5000);
-            WebElement TienThanhToanMomo = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"form-qr-code\"]/div[1]/div[1]/div[1]/div/div[2]/div[3]/h3")));
-            System.out.println(TienThanhToanMomo.getText());
-        }
-
-
-
     }
 
     public void chonVoucherGiamTienVaThanhToan(String giatrigoicuoc, String voucher) throws InterruptedException {
@@ -407,6 +390,15 @@ int soKyTuBanDau = 0;
         WebElement tenGoiTrenWeb = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div[5]/div[2]/p[2]")));
         assert tenGoiKhiMua.equalsIgnoreCase(tenGoiTrenWeb.getText()) :  " ten goi cuoc hien thi tren website sai";
         System.out.println("Ten goi cuoc mua da dung");
+    }
+    public void showsInvalidCodeErrorMessage(){
+        WebElement messageError = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Mã không hợp lệ']")));
+        if (messageError.isDisplayed()) {
+            System.out.println("loi ma khong hop le ");
+        } else {
+            throw new AssertionError(" khong hien ma khong hop le ");
+    }
+
     }
     public boolean  isPackageVisible( String packageName){
         By packageLocator =By.xpath("//div[@class='package-header']//div//p[text()='"+packageName+"']");
