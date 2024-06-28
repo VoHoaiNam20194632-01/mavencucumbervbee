@@ -2,7 +2,7 @@
 Feature: feature  to test Register functionality
 
   @login
-  Scenario Outline: Login test pass
+  Scenario Outline: Register test pass
     Given user is on register page
     # truy cập trang đăng nhập
     When click Register
