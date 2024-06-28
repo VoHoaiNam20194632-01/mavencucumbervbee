@@ -27,7 +27,7 @@ Feature: Buy Package
     And check ten goi cuoc sau khi mua "<tengoi>"
 Examples:
     |voucher              | giatrigoicuoc  | kyTuGoiThangTieuChuan |thang       | tengoi|
-    |10%     |199000 | 300000                                | 30            | Tiêu chuẩn - Tháng |
+    |5%     |199000 | 300000                                | 30            | Tiêu chuẩn - Tháng |
 
 #    GIAM TIEN
   Scenario Outline: User purchases the standard package month và chọn voucher GIAM TIEN

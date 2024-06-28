@@ -5,8 +5,6 @@
         <classes>
             <class name="Runner.Login.LoginRunnerP"/>
             <class name="Runner.BuyDacBiet.thangBuyPackDataDacBiet"/>
-            <class name="Runner.BuyDacBiet.quyBuyPackDataDacBiet"/>
-            <class name="Runner.BuyDacBiet.namBuyPackDataDacBiet"/>
         </classes>
     </test>
 </suite>
