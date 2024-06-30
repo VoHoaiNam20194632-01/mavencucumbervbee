@@ -5,7 +5,7 @@
     <test verbose="2" preserve-order="true" name="Test ">
         <classes>
             <class name="Runner.Login.LoginRunnerP"/>
-            <class name="Runner.TTSChuyenNghiep.TTSLink"/>
+            <class name="Runner.TTSChuyenNghiep.TTSNhapND"/>
         </classes>
     </test>
 </suite>
