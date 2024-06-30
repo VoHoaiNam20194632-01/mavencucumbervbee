@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {
-                "src/test/resources/features/textTranfer/special/WebLink.feature"
+                "src/test/resources/features/textTranfer/special/TtsImportLink.feature"
 
         },
         glue = "StepDefinitions",
