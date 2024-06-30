@@ -201,6 +201,12 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
+                        <!-- Call Suite name -->
+<!--                        <suiteXmlFile> ${project.basedir}/src/test/resources/testNG/testLogins.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\TtsTieuChuan.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyTieuChuan.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyChuyenNghiep.xml </suiteXmlFile>-->
+<!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyDacBiet.xml </suiteXmlFile>-->
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
 <!--                    <argLine>-->
@@ -224,6 +230,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 </project>
