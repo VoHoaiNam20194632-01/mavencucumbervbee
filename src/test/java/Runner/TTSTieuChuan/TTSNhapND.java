@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = {
-                "src/test/resources/features/textTranfer/special/TtsImportText.feature"
+                "src/test/resources/features/textTranfer/standard/TtsImportText.feature"
 
         },
         glue = "StepDefinitions",
