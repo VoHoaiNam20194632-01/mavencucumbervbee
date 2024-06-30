@@ -209,9 +209,9 @@
 <!--                        <suiteXmlFile> ${project.basedir}\src\test\resources\testNG\testBuyDacBiet.xml </suiteXmlFile>-->
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar"
-                    </argLine>
+<!--                    <argLine>-->
+<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar"-->
+<!--                    </argLine>-->
                     <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
