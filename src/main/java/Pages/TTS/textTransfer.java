@@ -152,14 +152,18 @@ public class textTransfer {
         chonDinhDang.click();
     }
     public static void NhacNen(String nhacnen) throws IOException, InterruptedException {
-        String File = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\music\\" + nhacnen;
+//        String File = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\music\\" + nhacnen;
         WebElement nhacNenBtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"request-editor\"]/div/div[3]/div/div[1]/div[4]/button")));
         nhacNenBtn.click();
-        Thread.sleep(2000);
-       WebElement tainhacBtn = driver.findElement(By.id("upload-music-file"));
-       tainhacBtn.sendKeys(File);
-       WebElement Upload = driver.findElement(By.xpath("//button[contains(text(),'upload')]"));
-       Upload.click();
+//        Thread.sleep(2000);
+//       WebElement tainhacBtn = driver.findElement(By.id("upload-music-file"));
+//       tainhacBtn.sendKeys(File);
+//       WebElement Upload = driver.findElement(By.xpath("//button[contains(text(),'upload')]"));
+//       Upload.click();
+        String Nhac = "//li[p[contains(text(), '"+nhacnen+"')]]";
+        WebElement NhacNenLocator = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Nhac)));
+        NhacNenLocator.click();
+
         WebElement BtnApDung = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), 'Áp dụng')]")));
         BtnApDung.click();
         Thread.sleep(7000);

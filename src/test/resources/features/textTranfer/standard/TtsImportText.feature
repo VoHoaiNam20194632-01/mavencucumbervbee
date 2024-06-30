@@ -20,4 +20,4 @@ Feature: Text-to-speech with the standard package
 
     Examples:
     | title       | standard reading             | audio | tocdo | nhacnen |
-    | test           |     HN - Anh Khôi voice     | mp3 | 1.5x       | SauConMua.mp3 |
+    | test           |     HN - Anh Khôi voice     | mp3 | 1.5x       | bai1.mp3 |

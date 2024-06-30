@@ -34,7 +34,6 @@ public class LoginVbeeSteps {
         driver.navigate().to("https://dev-accounts.vbee.ai/auth/realms/vbee-holding/protocol/openid-connect/auth?client_id=vbee-tts-crm&redirect_uri=https%3A%2F%2Fdev-studio.vbee.vn%2Fstudio%2Ftext-to-speech&state=0c021e5f-9aaa-4c4d-88d9-ade550fe12c7&response_mode=fragment&response_type=code&scope=openid&nonce=d59fd6ea-8bc1-4aba-91ab-3f3a8f0126a8");
         loginPage = new LoginPage(driver);
         Dimension size = driver.manage().window().getSize();
-
         // In ra kích thước
         System.out.println("Chiều rộng của cửa sổ: " + size.getWidth());
         System.out.println("Chiều cao của cửa sổ: " + size.getHeight());
