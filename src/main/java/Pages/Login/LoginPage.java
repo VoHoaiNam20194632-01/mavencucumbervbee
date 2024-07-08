@@ -84,6 +84,7 @@ By bannerLocator = By.cssSelector("#react-joyride-step-0 > div > div > div.css-1
         }
     }
     public void clickNoButton() throws InterruptedException {
+        Thread.sleep(3000);
         WebElement bannerbtn = wait50.until(ExpectedConditions.visibilityOfElementLocated(bannerLocator));
         bannerbtn.click();
     }
