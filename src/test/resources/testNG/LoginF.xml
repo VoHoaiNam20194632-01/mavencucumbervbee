@@ -4,7 +4,7 @@
 
     <test verbose="2" preserve-order="true" name="Test ">
         <classes>
-            <class name="Runner.Login.LoginRunnerF"/>
+            <class name="Runner.Login.LoginF"/>
         </classes>
     </test>
 </suite>

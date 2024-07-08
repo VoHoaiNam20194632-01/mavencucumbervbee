@@ -6,13 +6,14 @@ import org.testng.annotations.AfterClass;
 
 @CucumberOptions(
         features = {
-                "src/test/resources/features/Studio/Login/FailedLogin.feature"
+//        features = {"src/test/resources/features/Studio/Login/FailedLoginGG.feature",
+                "src/test/resources/features/Studio/Login/loginF.feature"
         },
         glue = "StepDefinitions",
 //        glue = {"StepDefinitions", "AllureScreenshotListener"},
         plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
-public class LoginRunnerF extends AbstractTestNGCucumberTests {
+public class LoginF extends AbstractTestNGCucumberTests {
 
     @AfterClass
     public void TearDown(){
