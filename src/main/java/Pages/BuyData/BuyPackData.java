@@ -25,9 +25,9 @@ public class BuyPackData {
     static  WebDriverWait wait10 = new WebDriverWait(driver, timeout10);
     By muaGoiCuocLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[1]/div/div/div[2]/ul/li[4]");
     By chonGoiMienPhiLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div/div/div[3]/span/div/div[1]/div[2]/div/div[4]/button");
-    By chonGoiTieuChuanLocator =By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[3]/span/div/div[2]/div[2]/div/div[4]/button");
-    By chonGoiChuyenNghiepLocator = By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[3]/span/div/div[3]/div[2]/div/div[4]/button");
-    By chonGoiDacBietLocator = By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[3]/span/div/div[4]/div[2]/div/div[4]/button");
+    By chonGoiTieuChuanLocator =By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[4]/span/div/div[2]/div[2]/div/div[4]/button");
+    By chonGoiChuyenNghiepLocator = By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[4]/span/div/div[3]/div[2]/div/div[4]/button");
+    By chonGoiDacBietLocator = By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[4]/span/div/div[4]/div[2]/div/div[4]/button");
     By chonGoiThangLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div/div/div[2]/div[1]/div[1]");
     By chonGoiQuyLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div/div/div[2]/div[1]/div[2]");
     By chonGoiNamLocator = By.xpath("//*[@id=\"root\"]/div[1]/div[2]/div/div/div/div/div[2]/div[1]/div[3]");
