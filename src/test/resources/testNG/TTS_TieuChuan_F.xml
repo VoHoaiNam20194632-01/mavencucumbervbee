@@ -4,7 +4,7 @@
 
     <test verbose="2" preserve-order="true" name="TestTieuChuanTTS">
         <classes>
-            <class name="Runner.Login.LoginGGP"/>
+            <class name="Runner.Login.LoginP"/>
             <class name="Runner.TTSTieuChuan.TTS_F"/>
         </classes>
     </test>
