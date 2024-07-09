@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestBuyDacBiet">
-    <test verbose="2" preserve-order="true" name="TestBuyDacBiet">
+<suite name="Test ">
+
+    <test verbose="2" preserve-order="true" name="Test ">
         <classes>
             <class name="Runner.Login.LoginGGP"/>
-            <class name="Runner.BuyF.BuyPackageF"/>
+            <class name="Runner.TTSDacBiet.TTSLink"/>
         </classes>
     </test>
 </suite>

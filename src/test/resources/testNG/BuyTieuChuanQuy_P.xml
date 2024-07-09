@@ -3,7 +3,7 @@
 <suite name="TestBuyTieuChuan">
     <test verbose="2" preserve-order="true" name="TestBuyTieuChuan">
         <classes>
-            <class name="Runner.Login.LoginGGRunnerP"/>
+            <class name="Runner.Login.LoginGGP"/>
             <class name="Runner.BuyTieuChuan.quyBuyPackDataTieuChuan"/>
         </classes>
     </test>

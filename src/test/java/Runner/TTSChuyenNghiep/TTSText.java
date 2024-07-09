@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 @Test
-public class TTSNhapND extends AbstractTestNGCucumberTests {
+public class TTSText extends AbstractTestNGCucumberTests {
         @AfterClass
         public void TearDown(){
 

@@ -3,7 +3,7 @@
 <suite name="TestBuyDacBiet">
     <test verbose="2" preserve-order="true" name="TestBuyDacBiet">
         <classes>
-            <class name="Runner.Login.LoginGGRunnerP"/>
+            <class name="Runner.Login.LoginP"/>
             <class name="Runner.CheckCancelOrder.CheckCancelOrder"/>
         </classes>
     </test>

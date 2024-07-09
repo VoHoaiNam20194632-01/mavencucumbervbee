@@ -4,8 +4,7 @@
 
     <test verbose="2" preserve-order="true" name="Test ">
         <classes>
-            <class name="Runner.Login.LoginGGRunnerP"/>
-            <class name="Runner.TTSDacBiet.TTSNhapND"/>
+            <class name="Runner.Login.LoginGGF"/>
         </classes>
     </test>
 </suite>

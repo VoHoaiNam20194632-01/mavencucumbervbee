@@ -1,7 +1,7 @@
 @SmokeFeature
 Feature: Purchase Package
 #  PHAN TRAM
-  Scenario Outline: User purchases the d package  month và chọn voucher %
+  Scenario Outline: User purchases theo package  month và chọn voucher %
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước

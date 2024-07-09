@@ -4,8 +4,8 @@
 
     <test verbose="2" preserve-order="true" name="TestTieuChuanTTS">
         <classes>
-            <class name="Runner.Login.LoginGGRunnerP"/>
-            <class name="Runner.TTSTieuChuan.TTSNhapND"/>
+            <class name="Runner.Login.LoginGGP"/>
+            <class name="Runner.TTSTieuChuan.TTSText"/>
         </classes>
     </test>
 </suite>
