@@ -2,6 +2,7 @@ package Pages.BuyData;
 
 import driver.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -133,7 +134,7 @@ int soKyTuBanDau = 0;
         System.out.println("tiengoicuoc" + tienGoiCuoc);
          WebElement AddVoucher = driver.findElement(addVoucherLocator);
          Thread.sleep(1000);
-         AddVoucher.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", AddVoucher);
         System.out.println("da click button them Voucher");
         WebElement nhapvoucher = driver.findElement(nhapMaKhuyenMai);
         System.out.println("da nhap ma voucher");

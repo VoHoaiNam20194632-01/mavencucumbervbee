@@ -29,16 +29,13 @@ public class WebDriverManager {
             prefs.put("download.default_directory", downloadFilepath);
             ChromeOptions chromeOptions = new ChromeOptions();
            chromeOptions.setExperimentalOption("prefs", prefs);
-            Dimension windowSize = new Dimension(1532, 880);
-            chromeOptions.addArguments("--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight());
             // Cài đặt đường dẫn đến driver
             chromeOptions.setCapability("proxy", proxy);
-
             driver = new ChromeDriver(  chromeOptions);
-
-            Dimension windowSize1 = new Dimension(1500, 800); // Kích thước cửa sổ mới (chiều rộng x chiều cao)
-            driver.manage().window().setSize(windowSize1); // Thiết lập kích thước cửa sổ
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            // Đặt kích thước cửa sổ trình duyệt
+            driver.manage().window().setSize(new Dimension(1200, 800));
         }
         return driver;
     }
