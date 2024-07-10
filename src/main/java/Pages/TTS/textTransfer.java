@@ -113,12 +113,12 @@ public class textTransfer {
     public void addLinkVanBan(String link) throws InterruptedException {
         WebElement taiLen = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label='Tải tệp lên hoặc nhập web link']")));
         taiLen.click();
-        WebElement taiLinkWeb = driver.findElement(By.xpath("/html/body/div[7]/div[3]/div/li[1]/div"));
+        WebElement taiLinkWeb = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/li[1]"));
         taiLinkWeb.click();
         WebElement dienLink = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/div/div[1]/div/div[1]/div/input")));
         dienLink.sendKeys(link);
         Thread.sleep(3000);
-        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/div/div[2]/button")));
+        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/button")));
         tiepTuc.click();
         LaySoKyTuTaiKhoanDaCo();
         System.out.println("So ky tu ban dau" +soKyTuBanDau);
