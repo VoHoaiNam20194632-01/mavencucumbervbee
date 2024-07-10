@@ -31,8 +31,6 @@ public class WebDriverManager {
            chromeOptions.setExperimentalOption("prefs", prefs);
             Dimension windowSize = new Dimension(1532, 880);
             chromeOptions.addArguments("--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight());
-//            chromeOptions.addArguments("--headless=new"); // Chạy ở chế độ ngầm
-//            chromeOptions.addArguments("--disable-gpu"); // Tắt GPU acceleration trong headless mode
             // Cài đặt đường dẫn đến driver
             chromeOptions.setCapability("proxy", proxy);
 

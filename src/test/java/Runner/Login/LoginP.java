@@ -6,7 +6,6 @@ import org.testng.annotations.AfterClass;
 
 @CucumberOptions(
         features = {
-//        features = {"src/test/resources/features/Studio/Login/FailedLoginGG.feature",
                 "src/test/resources/features/Studio/Login/loginP.feature"
         },
         glue = "StepDefinitions",

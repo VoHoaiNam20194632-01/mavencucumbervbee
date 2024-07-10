@@ -33,6 +33,10 @@ By bannerLocator = By.cssSelector("#react-joyride-step-0 > div > div > div.css-1
         ggBtn.click();
 
     }
+    public void  clickLoginGG(){
+        WebElement ddBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/main/div/div[1]/div/div/div/div[1]/div/div/div[4]/div/button[1]"));
+        ddBtn.click();
+    }
     public void enterUsername(String username ) throws InterruptedException {
         WebElement email= driver.findElement(By.id("username"));
         email.sendKeys(username);

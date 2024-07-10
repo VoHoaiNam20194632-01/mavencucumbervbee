@@ -59,6 +59,10 @@ public class LoginVbeeSteps {
     public void clickLoginGGButton() {
         loginPage.clickLoginBtn();
     }
+    @And("click Login GG")
+    public void clickLoginGG() {
+        loginPage.clickLoginGG();
+    }
     @And("user enters {string} username")
     public void userEntersUsername(String username) throws InterruptedException {
         System.out.println("Inside Step - user enters username and password");
