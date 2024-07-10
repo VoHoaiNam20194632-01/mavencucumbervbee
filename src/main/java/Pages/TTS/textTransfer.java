@@ -126,14 +126,14 @@ public class textTransfer {
     public void addFile(String file) throws AWTException, InterruptedException, IOException {
         WebElement taiLen = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label='Tải tệp lên hoặc nhập web link']")));
         taiLen.click();
-        WebElement taiFileTxt = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/li[3]")));
+        WebElement taiFileTxt = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/li[3]")));
         taiFileTxt.click();
 //        WebElement chonFile = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Chọn file']")));
 //        chonFile.click();
         String filePath = "C:\\Users\\VO HOAI NAM\\Documents\\DataTestVbee\\Text\\" + file+".txt";
         WebElement taifile = driver.findElement(By.xpath("//input[@type='file']"));
         taifile.sendKeys(filePath);
-        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[7]/div[3]/div/div/div[2]/button")));
+        WebElement tiepTuc = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div[3]/div/div/div[2]/button")));
         tiepTuc.click();
         LaySoKyTuTaiKhoanDaCo();
         System.out.println("So ky tu ban dau" +soKyTuBanDau);

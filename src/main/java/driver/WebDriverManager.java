@@ -30,7 +30,7 @@ public class WebDriverManager {
            chromeOptions.setExperimentalOption("prefs", prefs);
             // Cài đặt đường dẫn đến driver
             chromeOptions.setCapability("proxy", proxy);
-            chromeOptions.addArguments("--headless");
+//            chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--window-size=1500,802");
             driver = new ChromeDriver(  chromeOptions);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
