@@ -33,6 +33,10 @@ public class RegisterPage {
         WebElement RegisterStart = wait50.until(ExpectedConditions.visibilityOfElementLocated(RegisterStartLocator));
         RegisterStart.click();
     }
+    public void clickRegisterStartNew(){
+        WebElement RegisterNewStart = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/main/div/div[1]/div/div/div/div[1]/div/div/div[2]/div/a/p")));
+        RegisterNewStart.click();
+    }
     public void enterEmail(String email){
         WebElement emailInput = wait50.until(ExpectedConditions.visibilityOfElementLocated(emailLocator));
         emailInput.sendKeys(email);
@@ -48,6 +52,10 @@ public class RegisterPage {
     public void clickRegister(){
         WebElement Register = wait50.until(ExpectedConditions.visibilityOfElementLocated(RegisterLocator));
         Register.click();
+    }
+    public void clickRegisterNew(){
+        WebElement RegisterNew = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/main/div/div[1]/div/div/div/div/div[1]/div/div[2]/button")));
+        RegisterNew.click();
     }
     public void ErrorMessageRegister(){
         boolean isErrorMessageDisplayed = isElementPresent(driver, By.cssSelector("div.mt-2.text-red-600.text-xs.font-semibold"));

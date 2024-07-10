@@ -108,12 +108,12 @@ int soKyTuBanDau = 0;
     public void huyDon(){
         try {
             // Chờ banner cảnh báo xuất hiện
-            WebElement alertBanner = wait50.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".MuiBox-root .content-wrapper .MuiTypography-body1.content")));
+            WebElement alertBanner = wait10.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".MuiBox-root .content-wrapper .MuiTypography-body1.content")));
 
             // Kiểm tra nội dung banner
             if (alertBanner.getText().contains("Quý khách có 01 đơn hàng đang chờ duyệt")) {
                 // Tìm và click nút "Hủy đơn hàng"
-                WebElement cancelOrderButton = wait50.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".MuiButton-root.cancel-button")));
+                WebElement cancelOrderButton = wait10.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".MuiButton-root.cancel-button")));
                 cancelOrderButton.click();
                 System.out.println("Đơn hàng đã được hủy.");
             }
@@ -131,9 +131,9 @@ int soKyTuBanDau = 0;
     public void chonVoucherPhanTramVaThanhToan(String giatrigoicuco, String voucher) throws InterruptedException {
         double tienGoiCuoc = (Integer.parseInt(giatrigoicuco));
         System.out.println("tiengoicuoc" + tienGoiCuoc);
-    WebElement AddVoucher = driver.findElement(addVoucherLocator);
-    Thread.sleep(1000);
-        AddVoucher.click();
+         WebElement AddVoucher = driver.findElement(addVoucherLocator);
+         Thread.sleep(1000);
+         AddVoucher.click();
         System.out.println("da click button them Voucher");
         WebElement nhapvoucher = driver.findElement(nhapMaKhuyenMai);
         System.out.println("da nhap ma voucher");

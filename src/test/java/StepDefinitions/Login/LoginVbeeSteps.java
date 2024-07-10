@@ -38,7 +38,7 @@ public class LoginVbeeSteps {
         captureScreenshot("trang login");
         // Nếu có lỗi, ghi log
     }
-    @Given("user is on login page")
+    @Given("user is on home page")
     public void userIsOnLoginPage() throws InterruptedException, IOException {
         // Thực hiện các thao tác kiểm thử
         System.out.println("inside Step - user is on login page vbee");

@@ -13,7 +13,7 @@
       | usernameerror |
       | namvhvbee.ai |
     Scenario Outline: Login test fail password error GG
-      Given user is on login page
+      Given user is on login page gg
      # truy cập trang đăng nhập
       When click Login GG button
      # click Login bằng gg

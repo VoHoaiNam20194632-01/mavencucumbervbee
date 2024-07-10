@@ -5,7 +5,7 @@ Feature: feature  to test register function
     Given user is on register page
     # truy cập trang đăng nhập
     When click Register
-    # click login bằng GG
+    # click dang ky bằng GG
     And user enters "<usernameerror>" username register
     # nhập tên đăng nhập và mật khẩu
     And user enter "<password>"  password register
@@ -21,7 +21,7 @@ Feature: feature  to test register function
     Given user is on register page
      # truy cập trang đăng nhập
     When click Register
-     # click Login bằng gg
+     # click dangky bằng gg
     And user enters "<username>" username register
      # nhập email
     And user enter "<passworderror>"  password register

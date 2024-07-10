@@ -38,9 +38,10 @@ public class BuyPackDataSteps {
         captureScreenshot("trang mua goi cuoc");
     }
     @And("Get the initial number of characters the account has")
-    public void getTheInitialNumberOfCharactersTheAccountHas() throws InterruptedException {
+    public void getTheInitialNumberOfCharactersTheAccountHas() throws InterruptedException, IOException {
         BuyPackData = new BuyPackData(driver);
         BuyPackData.LaySoKyTuTaiKhoanDaCo();
+        captureScreenshot("am so ky tu truoc");
     }
 //#    chọn gói cước miễn phí
     @And("the user selects the free package")

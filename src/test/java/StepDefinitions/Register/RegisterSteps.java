@@ -43,7 +43,12 @@ public class RegisterSteps {
         registerPage.clickRegisterStart();
         captureScreenshot("register strart");
     }
-
+    @And("click  register new")
+    public void clickRegisterNew() {
+        System.out.println("click Register start");
+        registerPage = new RegisterPage(driver);
+        registerPage.clickRegisterStartNew();
+    }
 
     @And("user enters {string} username register")
     public void userEntersUsernameRegister(String email) {
@@ -64,7 +69,11 @@ public class RegisterSteps {
     @And("click  Register button")
     public void clickRegisterButton() {
     System.out.println("click register btn");
-        registerPage.clickRegister();
+    registerPage.clickRegister();
+    }
+    @And("click  Register new button")
+    public void clickRegisterNewButton() {
+        registerPage.clickRegisterNew();
     }
     @And("Error message register")
     public void errorMessageRegister() {
@@ -84,5 +93,4 @@ public class RegisterSteps {
         byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment(stepName, new ByteArrayInputStream(screenshot));
     }
-
 }
