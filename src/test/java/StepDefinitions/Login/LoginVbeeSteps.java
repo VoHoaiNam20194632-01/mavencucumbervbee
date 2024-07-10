@@ -99,7 +99,7 @@ public class LoginVbeeSteps {
         String currentUrl = driver.getCurrentUrl();
 
         if (currentUrl.equals(expectedUrl)) {
-            System.out.println("Đã đăng nhập và đang ở trang chủ (dubbing)!");
+            System.out.println("Đã đăng nhập và đang ở trang chủ ");
         } else {
             // Nếu URL không giống, điều hướng đến trang dubbing
             driver.navigate().to(expectedUrl);
@@ -108,11 +108,13 @@ public class LoginVbeeSteps {
         captureScreenshot("trang AIVOICE");
     }
     @And("Error message gg")
-    public void errorMessagegg() {
+    public void errorMessagegg() throws IOException {
+        captureScreenshot("thong bao loi");
         loginPage.ErrorMessagegg();
     }
     @Then("Error message")
-    public void errorMessage() {
+    public void errorMessage() throws IOException {
+        captureScreenshot("thong bao loi");
         loginPage.ErrorMessage();
     }
     @After
