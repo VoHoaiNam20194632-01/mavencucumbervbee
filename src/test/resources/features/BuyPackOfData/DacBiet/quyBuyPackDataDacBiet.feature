@@ -1,7 +1,7 @@
 @SmokeFeature
-Feature: Purchase Package
+Feature: Buy Package
 #  PHAN TRAM
-  Scenario Outline: User purchases the d package  QUY và chọn voucher %
+  Scenario Outline: User purchases the Dac Biet  package  QUY và chọn voucher %
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
@@ -30,7 +30,7 @@ Feature: Purchase Package
       |5%                     |2049000 | 3000000                            | 90            | Đặc biệt - Quý |
 
 #    GIAM TIEN
-  Scenario Outline: User purchases the standard package QUY và chọn voucher GIAM TIEN
+  Scenario Outline: User purchases the Dac Biet  package QUY và chọn voucher GIAM TIEN
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
@@ -60,7 +60,7 @@ Feature: Purchase Package
       | 5K                   |2049000 | 3000000                        | 90       | Đặc biệt - Quý |
 
 #    TANG KY TU
-  Scenario Outline: User purchases the standard package QUY và chọn voucher TANG KY TU
+  Scenario Outline: User purchases the Dac Biet package QUY và chọn voucher TANG KY TU
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước

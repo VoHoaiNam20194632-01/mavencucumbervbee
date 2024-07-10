@@ -1,5 +1,5 @@
 @SmokeFeature
-Feature: Purchase Packagez
+Feature: Buy Package
 
 #  PHAN TRAM
   Scenario Outline: User purchases the standard package NAM và chọn voucher %

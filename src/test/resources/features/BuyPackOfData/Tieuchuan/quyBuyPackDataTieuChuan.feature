@@ -1,5 +1,5 @@
 @SmokeFeature
-Feature: Purchase Package
+Feature: Buy Package
 #  PHAN TRAM
   Scenario Outline: User purchases the standard package QUY và chọn voucher %
     Given user is navigated to the home page
