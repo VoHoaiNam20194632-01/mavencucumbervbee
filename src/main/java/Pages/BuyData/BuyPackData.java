@@ -424,4 +424,22 @@ int soKyTuBanDau = 0;
         Thread.sleep(5000);
         if(!expectedUrl.equals(currentUrl)) throw  new AssertionError("looi");
     }
+    public void clickPhoneNumber(String phoneNumber){
+        WebElement clickNhapSDT = driver.findElement(By.cssSelector("svg[data-testid='EditIcon']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", clickNhapSDT);
+
+        // Click the SVG element using JavaScript
+        ((JavascriptExecutor) driver).executeScript("arguments[0].dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));", clickNhapSDT);
+        System.out.println("1");
+        WebElement sdt = driver.findElement(By.id("input-phone-number-payment"));
+        sdt.sendKeys(phoneNumber);
+    }
+    public void MessagePhoneNumberError(){
+        WebElement messageError= wait10.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".MuiTypography-root .MuiTypography-body1 .phone-number-warning .css-5i1w1c")));
+        if (messageError.isDisplayed()) {
+            System.out.println("loi so sdt khong hop le ");
+        } else {
+            throw new AssertionError(" khong hien ma khong hop le ");
+        }
+    }
 }

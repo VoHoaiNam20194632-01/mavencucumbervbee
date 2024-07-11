@@ -154,6 +154,14 @@ public class BuyPackDataSteps {
         BuyPackData.duyetDonHang();
         captureScreenshot("duyet don hang vua mua");
     }
+    @And("click phone number{string}")
+    public void clickPhoneNumber(String phoneNumber) {
+        BuyPackData.clickPhoneNumber(phoneNumber);
+    }
+    @And("Show message phone Number error")
+    public void showMessagePhoneNumberError() {
+        BuyPackData.MessagePhoneNumberError();
+    }
     @After
     public void TearDown(Scenario scenario) {
         if (
@@ -164,5 +172,4 @@ public class BuyPackDataSteps {
         }
 
     }
-
 }

@@ -4,8 +4,6 @@ Feature: Buy Package Failse
     Given user is navigated to the home page
     When the user is accessing the package purchase page
 #  người dùng đang truy cập trang mua gói cước
-    And Get the initial number of characters the account has
-    #Lấy số ký tự ban đầu tài khoản có
     And selects month
 #    chọn gói tháng
     And the user selects the standard package
@@ -18,3 +16,15 @@ Feature: Buy Package Failse
     Examples:
       |voucher              | giatrigoicuoc  |
       |20K     |199000 |
+
+    Scenario Outline: Buy Pack Failse wrong phone number or error
+      Given  user is navigated to the home page
+      When  the user is accessing the package purchase page
+      And the user selects the standard package
+      #  người dùng chọn gói cước tiêu chuẩn
+      And click phone number"<phonenumber>"
+      And Show message phone Number error
+      Examples:
+        | phonenumber |
+      |        0123456789     |
+      |                |
