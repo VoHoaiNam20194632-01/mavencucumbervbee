@@ -11,6 +11,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the special package
 #  người dùng chọn gói cước DAC BIET
+    And Check cancel order
     And ramdom bank
     #ramdom ngan hang
     And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
@@ -40,6 +41,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the special package
 #  người dùng chọn gói cước DAC BIET
+    And Check cancel order
     And ramdom bank
     #ramdom ngan hang
     And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
@@ -70,6 +72,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the special package
 #  người dùng chọn gói cước DAC BIET
+    And Check cancel order
     And ramdom bank
     #ramdom ngan hang
     And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay

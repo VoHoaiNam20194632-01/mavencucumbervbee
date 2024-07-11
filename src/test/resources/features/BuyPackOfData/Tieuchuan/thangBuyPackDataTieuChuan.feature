@@ -41,6 +41,7 @@ Examples:
 #    chọn gói tháng
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
+    And Check cancel order
     And ramdom bank
     #ramdom ngan hang
     And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
@@ -71,6 +72,7 @@ Examples:
 #    chọn gói tháng
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
+    And Check cancel order
     And ramdom bank
     #ramdom ngan hang
     And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay

@@ -11,6 +11,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
+    And Check cancel order
     And ramdom bank
     And "<giatrigoicuoc>" select voucher "<voucher>" phan tram and pay
 #  thực hiện chon khuyen mai và thanh toán(check giá gói cước ....)
@@ -41,6 +42,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
+    And Check cancel order
     And ramdom bank
     And "<giatrigoicuoc>" select voucher "<voucher>" giam tien and pay
 #  thực hiện chon khuyen mai và thanh toán(check giá gói cước ....)
@@ -71,6 +73,7 @@ Feature: Buy Package
 #    chọn gói tháng
     And the user selects the standard package
 #  người dùng chọn gói cước tiêu chuẩn
+    And Check cancel order
     And ramdom bank
     And "<giatrigoicuoc>" select voucher "<voucher>" tang ky tu and pay
 #  thực hiện chon khuyen mai và thanh toán(check giá gói cước ....)
