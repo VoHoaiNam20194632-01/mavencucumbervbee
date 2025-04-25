@@ -1,10 +1,30 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - master
-      - gh-pages
+      - main
   pull_request:
     branches:
-      - master
+      - main
+  repository_dispatch:
+    types: [trigger-pipeline]  # Đây là tên sự kiện bạn sẽ gửi từ bot Telegram
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test
