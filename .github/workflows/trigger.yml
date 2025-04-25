@@ -1,0 +1,16 @@
+name: Trigger Pipeline
+
+on:
+  repository_dispatch:
+    types: [trigger-pipeline]  # Đây là loại sự kiện mà bot của bạn sẽ gửi đến
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build project
+        run: echo "Building project triggered by Telegram bot"
